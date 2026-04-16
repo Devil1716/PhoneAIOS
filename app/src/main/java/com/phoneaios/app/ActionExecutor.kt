@@ -1,10 +1,10 @@
-package com.phoneaios.app
-
+import android.content.Context
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class ActionExecutor {
+class ActionExecutor(context: Context) {
+    private val memoryManager = MemoryManager(context)
     interface ActionCallback {
         fun onActionStarted(action: Action)
         suspend fun onSafetyCheckRequired(action: Action): Boolean
@@ -43,6 +43,10 @@ class ActionExecutor {
                     ActionType.INSTALL_CLICK -> true
                     ActionType.SCROLL -> {
                         service.scroll()
+                        true
+                    }
+                    ActionType.MEMORIZE -> {
+                        action.text?.let { memoryManager.remember("User", "fact", it) }
                         true
                     }
                 }

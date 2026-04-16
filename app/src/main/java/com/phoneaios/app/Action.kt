@@ -9,7 +9,8 @@ enum class ActionType {
     WAIT,
     ENTER,
     INSTALL_CLICK,
-    SCROLL
+    SCROLL,
+    MEMORIZE
 }
 
 data class Action(

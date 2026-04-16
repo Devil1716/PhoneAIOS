@@ -56,15 +56,16 @@ class AIBrain(private val context: Context) {
         return actions
     }
 
-    fun generateActions(prompt: String, screenContext: String = ""): List<Action> {
+    fun generateActions(prompt: String, screenContext: String = "", memoryContext: String = ""): List<Action> {
         val fullPrompt = """
+            $memoryContext
             $screenContext
             
             User Command: "$prompt"
-            Convert this command to JSON actions based on the current screen content.
-            Format: [{"type": "CLICK_TEXT", "text": "..."}, {"type": "WAIT", "duration": 1000}]
-            Available types: OPEN_APP, CLICK_TEXT, TYPE_TEXT, TAP, SWIPE, WAIT, ENTER, SCROLL
-            If a button isn't visible, use SCROLL.
+            Convert this command to JSON actions. If you find a new fact about the user, use "MEMORIZE".
+            
+            Format: [{"type": "CLICK_TEXT", "text": "..."}, {"type": "MEMORIZE", "subject": "User", "predicate": "likes", "text": "Pizza"}]
+            Available types: OPEN_APP, CLICK_TEXT, TYPE_TEXT, TAP, SWIPE, WAIT, ENTER, SCROLL, MEMORIZE
         """.trimIndent()
         val response = llmInference?.generateResponse(fullPrompt) ?: ""
         return parseActionsFromText(response)

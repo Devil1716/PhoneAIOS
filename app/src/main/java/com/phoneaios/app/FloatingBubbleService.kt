@@ -23,8 +23,9 @@ class FloatingBubbleService : Service() {
     private var overlayView: View? = null
     private var edgeGlow: EdgeGlowView? = null
     private var speechRecognizer: SpeechRecognizer? = null
-    private val actionExecutor = ActionExecutor()
+    private val actionExecutor by lazy { ActionExecutor(this) }
     private val promptEngine = PromptEngine()
+    private val memoryManager by lazy { MemoryManager(this) }
     private var voiceManager: VoiceFeedbackManager? = null
     private var aiBrain: AIBrain? = null
     private var screenParser = ScreenParser()
@@ -133,9 +134,10 @@ class FloatingBubbleService : Service() {
             
             val screenContext = screenParser.parseScreen(PhoneControlService.instance?.rootInActiveWindow)
             
-            statusText?.text = "Thinking..."
             CoroutineScope(Dispatchers.IO).launch {
-                val aiActions = aiBrain?.generateActions(cmd, screenContext) ?: emptyList()
+                val memoryContext = memoryManager.getAllKnowledgeSummary()
+                statusText?.text = "Thinking..."
+                val aiActions = aiBrain?.generateActions(cmd, screenContext, "Knowledge Graph:\n$memoryContext") ?: emptyList()
                 withContext(Dispatchers.Main) {
                     if (aiActions.isNotEmpty()) {
                         executeSequence(aiActions)
