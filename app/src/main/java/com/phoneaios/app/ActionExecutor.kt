@@ -7,6 +7,7 @@ import kotlinx.coroutines.withContext
 class ActionExecutor {
     interface ActionCallback {
         fun onActionStarted(action: Action)
+        suspend fun onSafetyCheckRequired(action: Action): Boolean
         fun onSequenceComplete()
     }
 
@@ -14,6 +15,10 @@ class ActionExecutor {
         val service = PhoneControlService.instance ?: return
         
         for (action in actions) {
+            if (action.isSensitive) {
+                val approved = callback?.onSafetyCheckRequired(action) ?: true
+                if (!approved) break
+            }
             callback?.onActionStarted(action)
                 val success = when (action.type) {
                     ActionType.OPEN_APP -> { 
@@ -42,7 +47,8 @@ class ActionExecutor {
                     }
                 }
                 if (!success) {
-                    android.util.Log.w("ActionExecutor", "Action failed: ${action.type}")
+                    android.util.Log.w("ActionExecutor", "Action failed: ${action.type}. Attempting recovery/notification.")
+                    // In a real scenario, we might trigger a 'back' gesture or wait 
                 }
             }
             delay(1000) 

@@ -18,5 +18,6 @@ data class Action(
     val packageName: String? = null,
     val x: Float? = null,
     val y: Float? = null,
-    val duration: Long = 0
+    val duration: Long = 0,
+    val isSensitive: Boolean = false
 )

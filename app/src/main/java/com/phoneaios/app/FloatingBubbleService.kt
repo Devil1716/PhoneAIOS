@@ -25,12 +25,19 @@ class FloatingBubbleService : Service() {
     private var speechRecognizer: SpeechRecognizer? = null
     private val actionExecutor = ActionExecutor()
     private val promptEngine = PromptEngine()
+    private var voiceManager: VoiceFeedbackManager? = null
+    private var aiBrain: AIBrain? = null
+    private var screenParser = ScreenParser()
+    private var statusText: android.widget.TextView? = null
+    private var planText: android.widget.TextView? = null
 
     override fun onCreate() {
         super.onCreate()
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
         createBubble()
         initSpeech()
+        aiBrain = AIBrain(this)
+        voiceManager = VoiceFeedbackManager(this)
     }
 
     private fun createBubble() {
@@ -142,17 +149,39 @@ class FloatingBubbleService : Service() {
         }
     }
 
+    private var lastApprovalTime = 0L
+    private val TRUST_DURATION_MS = 5 * 60 * 1000 // 5 minutes
+
     private fun executeSequence(actions: List<Action>) {
         showOverlay()
         CoroutineScope(Dispatchers.Main).launch {
             actionExecutor.execute(actions, object : ActionExecutor.ActionCallback {
                 override fun onActionStarted(action: Action) {
+                    val status = "AI: ${action.type.name.lowercase().replace("_", " ")}"
                     planText?.alpha = 1f
-                    planText?.text = "AI: ${action.type.name.lowercase().replace("_", " ")}"
+                    planText?.text = status
                     statusText?.text = "Executing..."
                 }
 
+                override suspend fun onSafetyCheckRequired(action: Action): Boolean {
+                    voiceManager?.speak("I need your approval for this action.")
+                    // Trusted Mode check
+                    if (System.currentTimeMillis() - lastApprovalTime < TRUST_DURATION_MS) {
+                        return true
+                    }
+
+                    // Show Confirmation Overlay
+                    val deferred = kotlinx.coroutines.CompletableDeferred<Boolean>()
+                    showConfirmationOverlay(action) { approved ->
+                        deferred.complete(approved)
+                    }
+                    val result = deferred.await()
+                    if (result) lastApprovalTime = System.currentTimeMillis()
+                    return result
+                }
+
                 override fun onSequenceComplete() {
+                    voiceManager?.speak("Action complete")
                     planText?.text = "Complete"
                     edgeGlow?.flashSuccess()
                     CoroutineScope(Dispatchers.Main).launch {
@@ -162,6 +191,54 @@ class FloatingBubbleService : Service() {
                 }
             })
         }
+    }
+
+    private fun showConfirmationOverlay(action: Action, callback: (Boolean) -> Unit) {
+        val params = WindowManager.LayoutParams(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+            PixelFormat.TRANSLUCENT
+        ).apply {
+            gravity = Gravity.CENTER
+        }
+        
+        val safetyView = LayoutInflater.from(this).inflate(R.layout.confirmation_overlay, null)
+        val plan = safetyView.findViewById<android.widget.TextView>(R.id.safetyPlan)
+        plan.text = "AI plans to: ${action.type.name} ${action.text ?: ""}"
+        
+        val handle = safetyView.findViewById<View>(R.id.swipeHandle)
+        val container = safetyView.findViewById<View>(R.id.swipeContainer)
+        
+        handle.setOnTouchListener { v, event ->
+            when (event.action) {
+                MotionEvent.ACTION_MOVE -> {
+                    val newX = event.rawX - v.width / 2
+                    if (newX > 0 && newX < container.width - v.width) {
+                        v.x = newX
+                    }
+                    if (newX >= container.width - v.width - 20) {
+                        // Success!
+                        windowManager.removeView(safetyView)
+                        callback(true)
+                    }
+                    true
+                }
+                MotionEvent.ACTION_UP -> {
+                    if (v.x < container.width - v.width) v.animate().x(0f).start()
+                    true
+                }
+                else -> true
+            }
+        }
+        
+        safetyView.findViewById<View>(R.id.cancelButton).setOnClickListener {
+            windowManager.removeView(safetyView)
+            callback(false)
+        }
+        
+        windowManager.addView(safetyView, params)
     }
 
     private fun showOverlay() {
@@ -193,15 +270,6 @@ class FloatingBubbleService : Service() {
         }
     }
 
-    private fun processCommand(cmd: String) {
-        val actions = promptEngine.parseCommand(cmd)
-        if (actions.isNotEmpty()) {
-            CoroutineScope(Dispatchers.Main).launch {
-                actionExecutor.execute(actions)
-            }
-        }
-    }
-
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onDestroy() {
@@ -209,5 +277,6 @@ class FloatingBubbleService : Service() {
         bubbleView?.let { windowManager.removeView(it) }
         hideOverlay()
         speechRecognizer?.destroy()
+        voiceManager?.shutdown()
     }
 }

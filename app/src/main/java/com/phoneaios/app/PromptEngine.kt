@@ -1,6 +1,11 @@
 package com.phoneaios.app
 
 class PromptEngine {
+    private val appPreferences = mutableMapOf(
+        "music" to "com.google.android.apps.youtube.music",
+        "chat" to "com.whatsapp"
+    )
+
     fun parseCommand(cmd: String): List<Action> {
         val lowerCmd = cmd.lowercase()
         return when {

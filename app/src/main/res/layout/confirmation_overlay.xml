@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/glass_card"
+    android:elevation="12dp"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/safetyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Safety Confirmation"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/safetyPlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="AI wants to perform a sensitive action..."
+        android:textColor="#AAAAAA"
+        android:textSize="14sp" />
+
+    <!-- Simple Swipe Button Container -->
+    <FrameLayout
+        android:id="@+id/swipeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="24dp"
+        android:background="#1AFFFFFF">
+
+        <View
+            android:id="@+id/swipeTrack"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/composer_bg" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="SWIPE TO APPROVE"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:alpha="0.4" />
+
+        <ImageView
+            android:id="@+id/swipeHandle"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="#2D5CFE"
+            android:src="@android:drawable/ic_media_play"
+            android:padding="16dp" />
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/transparent"
+        android:text="Cancel Action"
+        android:textColor="#FF4444" />
+
+</LinearLayout>

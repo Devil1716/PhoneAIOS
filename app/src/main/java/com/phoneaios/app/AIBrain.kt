@@ -31,13 +31,23 @@ class AIBrain(private val context: Context) {
             if (jsonStart == -1 || jsonEnd == -1) return emptyList()
             
             val jsonArray = org.json.JSONArray(text.substring(jsonStart, jsonEnd + 1))
-            for (i in 0 until jsonArray.length()) {
-                val obj = jsonArray.getJSONObject(i)
+                val type = ActionType.valueOf(obj.getString("type"))
+                val textValue = if (obj.has("text")) obj.getString("text") else null
+                val pkgValue = if (obj.has("packageName")) obj.getString("packageName") else null
+                
+                // Sensitivity detection logic
+                val isSensitive = when {
+                    type == ActionType.TYPE_TEXT -> true // Typing is usually sensitive
+                    type == ActionType.OPEN_APP && (pkgValue?.contains("settings") == true || pkgValue?.contains("whatsapp") == true) -> true
+                    else -> false
+                }
+
                 actions.add(Action(
-                    type = ActionType.valueOf(obj.getString("type")),
-                    text = if (obj.has("text")) obj.getString("text") else null,
-                    packageName = if (obj.has("packageName")) obj.getString("packageName") else null,
-                    duration = if (obj.has("duration")) obj.getLong("duration") else 0L
+                    type = type,
+                    text = textValue,
+                    packageName = pkgValue,
+                    duration = if (obj.has("duration")) obj.getLong("duration") else 0L,
+                    isSensitive = isSensitive
                 ))
             }
         } catch (e: Exception) {
