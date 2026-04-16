@@ -1,0 +1,213 @@
+package com.phoneaios.app
+
+import android.app.Service
+import android.content.Intent
+import android.graphics.PixelFormat
+import android.os.Build
+import android.os.Bundle
+import android.os.IBinder
+import android.speech.RecognitionListener
+import android.speech.RecognizerIntent
+import android.speech.SpeechRecognizer
+import android.view.*
+import android.widget.ImageView
+import android.util.Log
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
+class FloatingBubbleService : Service() {
+
+    private lateinit var windowManager: WindowManager
+    private var bubbleView: View? = null
+    private var overlayView: View? = null
+    private var edgeGlow: EdgeGlowView? = null
+    private var speechRecognizer: SpeechRecognizer? = null
+    private val actionExecutor = ActionExecutor()
+    private val promptEngine = PromptEngine()
+
+    override fun onCreate() {
+        super.onCreate()
+        windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
+        createBubble()
+        initSpeech()
+    }
+
+    private fun createBubble() {
+        val params = WindowManager.LayoutParams(
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) 
+                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY 
+                else WindowManager.LayoutParams.TYPE_PHONE,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+            PixelFormat.TRANSLUCENT
+        ).apply {
+            gravity = Gravity.TOP or Gravity.START
+            x = 100
+            y = 100
+        }
+
+        bubbleView = LayoutInflater.from(this).inflate(R.layout.floating_bubble_btn, null)
+        bubbleView?.setOnTouchListener(object : View.OnTouchListener {
+            private var initialX = 0
+            private var initialY = 0
+            private var initialTouchX = 0f
+            private var initialTouchY = 0f
+
+            override fun onTouch(v: View, event: MotionEvent): Boolean {
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        initialX = params.x
+                        initialY = params.y
+                        initialTouchX = event.rawX
+                        initialTouchY = event.rawY
+                        return true
+                    }
+                    MotionEvent.ACTION_MOVE -> {
+                        params.x = initialX + (event.rawX - initialTouchX).toInt()
+                        params.y = initialY + (event.rawY - initialTouchY).toInt()
+                        windowManager.updateViewLayout(bubbleView, params)
+                        return true
+                    }
+                    MotionEvent.ACTION_UP -> {
+                        val diffX = event.rawX - initialTouchX
+                        val diffY = event.rawY - initialTouchY
+                        if (Math.abs(diffX) < 10 && Math.abs(diffY) < 10) {
+                            toggleListening()
+                        }
+                        return true
+                    }
+                }
+                return false
+            }
+        })
+
+        windowManager.addView(bubbleView, params)
+    }
+
+    private fun initSpeech() {
+        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this)
+        speechRecognizer?.setRecognitionListener(object : RecognitionListener {
+            override fun onReadyForSpeech(params: Bundle?) { showOverlay() }
+            override fun onRmsChanged(rmsdB: Float) {
+                val amp = (rmsdB + 2f) / 10f
+                edgeGlow?.setAmplitude(amp)
+            }
+            override fun onResults(results: Bundle?) {
+                val matches = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
+                matches?.get(0)?.let { processCommand(it) }
+                hideOverlay()
+            }
+            override fun onError(error: Int) { hideOverlay() }
+            override fun onBeginningOfSpeech() {}
+            override fun onBufferReceived(buffer: ByteArray?) {}
+            override fun onEndOfSpeech() {}
+            override fun onPartialResults(partialResults: Bundle?) {}
+            override fun onEvent(eventType: Int, params: Bundle?) {}
+        })
+    }
+
+    private fun toggleListening() {
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+            putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        }
+        speechRecognizer?.startListening(intent)
+    }
+
+    private fun processCommand(cmd: String) {
+        val actions = promptEngine.parseCommand(cmd)
+        if (actions.isNotEmpty()) {
+            executeSequence(actions)
+        } else {
+            // Fallback to LLM with Perception
+            showOverlay()
+            statusText?.text = "Perceiving screen..."
+            
+            val screenContext = screenParser.parseScreen(PhoneControlService.instance?.rootInActiveWindow)
+            
+            statusText?.text = "Thinking..."
+            CoroutineScope(Dispatchers.IO).launch {
+                val aiActions = aiBrain?.generateActions(cmd, screenContext) ?: emptyList()
+                withContext(Dispatchers.Main) {
+                    if (aiActions.isNotEmpty()) {
+                        executeSequence(aiActions)
+                    } else {
+                        statusText?.text = "Could not parse command"
+                        kotlinx.coroutines.delay(2000)
+                        hideOverlay()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun executeSequence(actions: List<Action>) {
+        showOverlay()
+        CoroutineScope(Dispatchers.Main).launch {
+            actionExecutor.execute(actions, object : ActionExecutor.ActionCallback {
+                override fun onActionStarted(action: Action) {
+                    planText?.alpha = 1f
+                    planText?.text = "AI: ${action.type.name.lowercase().replace("_", " ")}"
+                    statusText?.text = "Executing..."
+                }
+
+                override fun onSequenceComplete() {
+                    planText?.text = "Complete"
+                    edgeGlow?.flashSuccess()
+                    CoroutineScope(Dispatchers.Main).launch {
+                        kotlinx.coroutines.delay(1000)
+                        hideOverlay()
+                    }
+                }
+            })
+        }
+    }
+
+    private fun showOverlay() {
+        if (overlayView == null) {
+            val params = WindowManager.LayoutParams(
+                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) 
+                    WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY 
+                    else WindowManager.LayoutParams.TYPE_PHONE,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
+                PixelFormat.TRANSLUCENT
+            ).apply {
+                gravity = Gravity.BOTTOM
+            }
+            overlayView = LayoutInflater.from(this).inflate(R.layout.listening_overlay, null)
+            edgeGlow = overlayView?.findViewById(R.id.edgeGlow)
+            statusText = overlayView?.findViewById(R.id.statusText)
+            planText = overlayView?.findViewById(R.id.planText)
+            windowManager.addView(overlayView, params)
+        }
+    }
+
+    private fun hideOverlay() {
+        overlayView?.let { 
+            windowManager.removeView(it)
+            overlayView = null
+            edgeGlow = null
+        }
+    }
+
+    private fun processCommand(cmd: String) {
+        val actions = promptEngine.parseCommand(cmd)
+        if (actions.isNotEmpty()) {
+            CoroutineScope(Dispatchers.Main).launch {
+                actionExecutor.execute(actions)
+            }
+        }
+    }
+
+    override fun onBind(intent: Intent?): IBinder? = null
+
+    override fun onDestroy() {
+        super.onDestroy()
+        bubbleView?.let { windowManager.removeView(it) }
+        hideOverlay()
+        speechRecognizer?.destroy()
+    }
+}

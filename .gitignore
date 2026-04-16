@@ -1,0 +1,6 @@
+/build/
+/.gradle/
+/app/build/
+*.apk
+*.task
+.DS_Store
