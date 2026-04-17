@@ -31,14 +31,18 @@ class ModelDownloadManager(private val context: Context) {
     fun getModelType(): ModelType = currentModelType
 
     fun resolveModelFile(): File? {
-        val downloadFolder = File(
+        val appPrivateDownloadFolder = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
+        val privateFile = File(appPrivateDownloadFolder, currentModelType.fileName)
+        
+        val legacyDownloadFolder = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
             "PhoneAIOS/${currentModelType.name}/${currentModelType.fileName}"
         )
         val appExternalFolder = File(context.getExternalFilesDir(null), currentModelType.fileName)
         val internalFile = File(context.filesDir, currentModelType.fileName)
-        return listOf(downloadFolder, appExternalFolder, internalFile)
-            .firstOrNull { it.exists() && it.length() > 1024L * 1024L }
+        
+        return listOf(privateFile, legacyDownloadFolder, appExternalFolder, internalFile)
+            .firstOrNull { it.exists() && it.length() > 5 * 1024L * 1024L } // At least 5MB
     }
 
     fun isModelReady(): Boolean = resolveModelFile() != null
@@ -59,9 +63,10 @@ class ModelDownloadManager(private val context: Context) {
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
             .setAllowedOverMetered(true)
             .setAllowedOverRoaming(true)
-            .setDestinationInExternalPublicDir(
+            .setDestinationInExternalFilesDir(
+                context,
                 Environment.DIRECTORY_DOWNLOADS,
-                "PhoneAIOS/${currentModelType.name}/${currentModelType.fileName}"
+                currentModelType.fileName
             )
 
         downloadId = downloadManager.enqueue(request)
