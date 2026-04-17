@@ -1,0 +1,15 @@
+﻿build	Build with Gradle	∩╗┐2026-04-17T00:59:08.8329349Z ##[group]Run ./gradlew assembleDebug
+build	Build with Gradle	2026-04-17T00:59:08.8330422Z [36;1m./gradlew assembleDebug[0m
+build	Build with Gradle	2026-04-17T00:59:08.8357708Z shell: /usr/bin/bash -e {0}
+build	Build with Gradle	2026-04-17T00:59:08.8358563Z env:
+build	Build with Gradle	2026-04-17T00:59:08.8359585Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T00:59:08.8361453Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T00:59:08.8362907Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+build	Build with Gradle	2026-04-17T00:59:08.8363975Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+build	Build with Gradle	2026-04-17T00:59:08.8364998Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+build	Build with Gradle	2026-04-17T00:59:08.8366459Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+build	Build with Gradle	2026-04-17T00:59:08.8368123Z   DEVELOCITY_AUTO_INJECTION_CUSTOM_VALUE: gradle-actions
+build	Build with Gradle	2026-04-17T00:59:08.8369260Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+build	Build with Gradle	2026-04-17T00:59:08.8370174Z ##[endgroup]
+build	Build with Gradle	2026-04-17T00:59:08.8463312Z ./gradlew: 8: exec: ./gradle/wrapper/gradle-wrapper.properties: Permission denied
+build	Build with Gradle	2026-04-17T00:59:08.8472089Z ##[error]Process completed with exit code 126.
