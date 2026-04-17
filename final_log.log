@@ -1,0 +1,317 @@
+﻿build	Set up job	∩╗┐2026-04-17T01:12:56.6439346Z Current runner version: '2.333.1'
+build	Set up job	2026-04-17T01:12:56.6465619Z ##[group]Runner Image Provisioner
+build	Set up job	2026-04-17T01:12:56.6466542Z Hosted Compute Agent
+build	Set up job	2026-04-17T01:12:56.6467119Z Version: 20260213.493
+build	Set up job	2026-04-17T01:12:56.6467754Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+build	Set up job	2026-04-17T01:12:56.6468516Z Build Date: 2026-02-13T00:28:41Z
+build	Set up job	2026-04-17T01:12:56.6469175Z Worker ID: {9be4f0d9-e089-4696-b60f-58091d570a78}
+build	Set up job	2026-04-17T01:12:56.6469888Z Azure Region: westcentralus
+build	Set up job	2026-04-17T01:12:56.6470424Z ##[endgroup]
+build	Set up job	2026-04-17T01:12:56.6471884Z ##[group]Operating System
+build	Set up job	2026-04-17T01:12:56.6472500Z Ubuntu
+build	Set up job	2026-04-17T01:12:56.6472981Z 24.04.4
+build	Set up job	2026-04-17T01:12:56.6473525Z LTS
+build	Set up job	2026-04-17T01:12:56.6474026Z ##[endgroup]
+build	Set up job	2026-04-17T01:12:56.6474505Z ##[group]Runner Image
+build	Set up job	2026-04-17T01:12:56.6475454Z Image: ubuntu-24.04
+build	Set up job	2026-04-17T01:12:56.6475982Z Version: 20260406.80.1
+build	Set up job	2026-04-17T01:12:56.6476950Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260406.80/images/ubuntu/Ubuntu2404-Readme.md
+build	Set up job	2026-04-17T01:12:56.6478645Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260406.80
+build	Set up job	2026-04-17T01:12:56.6479547Z ##[endgroup]
+build	Set up job	2026-04-17T01:12:56.6480730Z ##[group]GITHUB_TOKEN Permissions
+build	Set up job	2026-04-17T01:12:56.6482692Z Contents: write
+build	Set up job	2026-04-17T01:12:56.6483305Z Issues: write
+build	Set up job	2026-04-17T01:12:56.6483851Z Metadata: read
+build	Set up job	2026-04-17T01:12:56.6484323Z ##[endgroup]
+build	Set up job	2026-04-17T01:12:56.6487181Z Secret source: Actions
+build	Set up job	2026-04-17T01:12:56.6487905Z Prepare workflow directory
+build	Set up job	2026-04-17T01:12:56.7519560Z Prepare all required actions
+build	Set up job	2026-04-17T01:12:56.7557857Z Getting action download info
+build	Set up job	2026-04-17T01:12:57.1725692Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+build	Set up job	2026-04-17T01:12:57.3271268Z Download action repository 'actions/setup-java@v4' (SHA:c1e323688fd81a25caa38c78aa6df2d33d3e20d9)
+build	Set up job	2026-04-17T01:12:58.3330870Z Download action repository 'gradle/actions@v3' (SHA:d9c87d481d55275bb5441eef3fe0e46805f9ef70)
+build	Set up job	2026-04-17T01:12:59.7375517Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+build	Set up job	2026-04-17T01:12:59.9666780Z Complete job name: build
+build	Run actions/checkout@v4	∩╗┐2026-04-17T01:13:00.0313050Z ##[group]Run actions/checkout@v4
+build	Run actions/checkout@v4	2026-04-17T01:13:00.0313658Z with:
+build	Run actions/checkout@v4	2026-04-17T01:13:00.0313916Z   repository: Devil1716/PhoneAIOS
+build	Run actions/checkout@v4	2026-04-17T01:13:00.0314376Z   token: ***
+build	Run actions/checkout@v4	2026-04-17T01:13:00.0314614Z   ssh-strict: true
+build	Run actions/checkout@v4	2026-04-17T01:13:00.0315034Z   ssh-user: git
+build	Run actions/checkout@v4	2026-04-17T01:13:00.0315287Z   persist-credentials: true
+build	Run actions/checkout@v4	2026-04-17T01:13:00.0315557Z   clean: true
+build	Run actions/checkout@v4	2026-04-17T01:13:00.0315802Z   sparse-checkout-cone-mode: true
+build	Run actions/checkout@v4	2026-04-17T01:13:00.0316087Z   fetch-depth: 1
+build	Run actions/checkout@v4	2026-04-17T01:13:00.0316308Z   fetch-tags: false
+build	Run actions/checkout@v4	2026-04-17T01:13:00.0316554Z   show-progress: true
+build	Run actions/checkout@v4	2026-04-17T01:13:00.0316810Z   lfs: false
+build	Run actions/checkout@v4	2026-04-17T01:13:00.0317030Z   submodules: false
+build	Run actions/checkout@v4	2026-04-17T01:13:00.0317264Z   set-safe-directory: true
+build	Run actions/checkout@v4	2026-04-17T01:13:00.0317725Z ##[endgroup]
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1395191Z Syncing repository: Devil1716/PhoneAIOS
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1396762Z ##[group]Getting Git version info
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1397206Z Working directory is '/home/runner/work/PhoneAIOS/PhoneAIOS'
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1397798Z [command]/usr/bin/git version
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1432935Z git version 2.53.0
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1457071Z ##[endgroup]
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1470715Z Temporarily overriding HOME='/home/runner/work/_temp/8441cf20-54f6-44c6-a453-e0c3be35f745' before making global git config changes
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1471732Z Adding repository directory to the temporary git global config as a safe directory
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1483658Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/PhoneAIOS/PhoneAIOS
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1515990Z Deleting the contents of '/home/runner/work/PhoneAIOS/PhoneAIOS'
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1519627Z ##[group]Initializing the repository
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1523498Z [command]/usr/bin/git init /home/runner/work/PhoneAIOS/PhoneAIOS
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1601577Z hint: Using 'master' as the name for the initial branch. This default branch name
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1602838Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1603631Z hint: to use in all of your new repositories, which will suppress this warning,
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1604070Z hint: call:
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1604478Z hint:
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1605039Z hint: 	git config --global init.defaultBranch <name>
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1605401Z hint:
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1605737Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1606369Z hint: 'development'. The just-created branch can be renamed via this command:
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1607000Z hint:
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1607347Z hint: 	git branch -m <name>
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1607729Z hint:
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1608155Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1608763Z Initialized empty Git repository in /home/runner/work/PhoneAIOS/PhoneAIOS/.git/
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1613828Z [command]/usr/bin/git remote add origin https://github.com/Devil1716/PhoneAIOS
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1648509Z ##[endgroup]
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1649225Z ##[group]Disabling automatic garbage collection
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1649662Z [command]/usr/bin/git config --local gc.auto 0
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1675923Z ##[endgroup]
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1676500Z ##[group]Setting up auth
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1682379Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Run actions/checkout@v4	2026-04-17T01:13:00.1711987Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Run actions/checkout@v4	2026-04-17T01:13:00.2103363Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Run actions/checkout@v4	2026-04-17T01:13:00.2136139Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Run actions/checkout@v4	2026-04-17T01:13:00.2365454Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Run actions/checkout@v4	2026-04-17T01:13:00.2395630Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Run actions/checkout@v4	2026-04-17T01:13:00.2637909Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	Run actions/checkout@v4	2026-04-17T01:13:00.2673464Z ##[endgroup]
+build	Run actions/checkout@v4	2026-04-17T01:13:00.2674151Z ##[group]Fetching the repository
+build	Run actions/checkout@v4	2026-04-17T01:13:00.2682303Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +2931b9eb2cb95f65cbac06a08b7f0cfa3a9d4abe:refs/remotes/origin/master
+build	Run actions/checkout@v4	2026-04-17T01:13:00.7190001Z From https://github.com/Devil1716/PhoneAIOS
+build	Run actions/checkout@v4	2026-04-17T01:13:00.7190875Z  * [new ref]         2931b9eb2cb95f65cbac06a08b7f0cfa3a9d4abe -> origin/master
+build	Run actions/checkout@v4	2026-04-17T01:13:00.7222315Z ##[endgroup]
+build	Run actions/checkout@v4	2026-04-17T01:13:00.7222924Z ##[group]Determining the checkout info
+build	Run actions/checkout@v4	2026-04-17T01:13:00.7225669Z ##[endgroup]
+build	Run actions/checkout@v4	2026-04-17T01:13:00.7231851Z [command]/usr/bin/git sparse-checkout disable
+build	Run actions/checkout@v4	2026-04-17T01:13:00.7271453Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build	Run actions/checkout@v4	2026-04-17T01:13:00.7300281Z ##[group]Checking out the ref
+build	Run actions/checkout@v4	2026-04-17T01:13:00.7305773Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+build	Run actions/checkout@v4	2026-04-17T01:13:00.7387104Z Reset branch 'master'
+build	Run actions/checkout@v4	2026-04-17T01:13:00.7389587Z branch 'master' set up to track 'origin/master'.
+build	Run actions/checkout@v4	2026-04-17T01:13:00.7396220Z ##[endgroup]
+build	Run actions/checkout@v4	2026-04-17T01:13:00.7431454Z [command]/usr/bin/git log -1 --format=%H
+build	Run actions/checkout@v4	2026-04-17T01:13:00.7454614Z 2931b9eb2cb95f65cbac06a08b7f0cfa3a9d4abe
+build	set up JDK 17	∩╗┐2026-04-17T01:13:00.7768488Z ##[group]Run actions/setup-java@v4
+build	set up JDK 17	2026-04-17T01:13:00.7768773Z with:
+build	set up JDK 17	2026-04-17T01:13:00.7768957Z   java-version: 17
+build	set up JDK 17	2026-04-17T01:13:00.7769146Z   distribution: temurin
+build	set up JDK 17	2026-04-17T01:13:00.7769356Z   java-package: jdk
+build	set up JDK 17	2026-04-17T01:13:00.7769539Z   check-latest: false
+build	set up JDK 17	2026-04-17T01:13:00.7769911Z   server-id: github
+build	set up JDK 17	2026-04-17T01:13:00.7770097Z   server-username: GITHUB_ACTOR
+build	set up JDK 17	2026-04-17T01:13:00.7770330Z   server-password: GITHUB_TOKEN
+build	set up JDK 17	2026-04-17T01:13:00.7770576Z   overwrite-settings: true
+build	set up JDK 17	2026-04-17T01:13:00.7770787Z   job-status: success
+build	set up JDK 17	2026-04-17T01:13:00.7771111Z   token: ***
+build	set up JDK 17	2026-04-17T01:13:00.7771293Z ##[endgroup]
+build	set up JDK 17	2026-04-17T01:13:00.9772088Z ##[group]Installed distributions
+build	set up JDK 17	2026-04-17T01:13:01.0014322Z Resolved Java 17.0.18+8 from tool-cache
+build	set up JDK 17	2026-04-17T01:13:01.0015334Z Setting Java 17.0.18+8 as the default
+build	set up JDK 17	2026-04-17T01:13:01.0027389Z Creating toolchains.xml for JDK version 17 from temurin
+build	set up JDK 17	2026-04-17T01:13:01.0102234Z Writing to /home/runner/.m2/toolchains.xml
+build	set up JDK 17	2026-04-17T01:13:01.0102845Z 
+build	set up JDK 17	2026-04-17T01:13:01.0103122Z Java configuration:
+build	set up JDK 17	2026-04-17T01:13:01.0104049Z   Distribution: temurin
+build	set up JDK 17	2026-04-17T01:13:01.0104367Z   Version: 17.0.18+8
+build	set up JDK 17	2026-04-17T01:13:01.0105269Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	set up JDK 17	2026-04-17T01:13:01.0105733Z 
+build	set up JDK 17	2026-04-17T01:13:01.0106196Z ##[endgroup]
+build	set up JDK 17	2026-04-17T01:13:01.0123420Z Creating settings.xml with server-id: github
+build	set up JDK 17	2026-04-17T01:13:01.0124957Z Writing to /home/runner/.m2/settings.xml
+build	Setup Gradle	∩╗┐2026-04-17T01:13:01.0348923Z ##[group]Run gradle/actions/setup-gradle@v3
+build	Setup Gradle	2026-04-17T01:13:01.0349245Z with:
+build	Setup Gradle	2026-04-17T01:13:01.0349421Z   gradle-version: 8.4
+build	Setup Gradle	2026-04-17T01:13:01.0349627Z   cache-disabled: false
+build	Setup Gradle	2026-04-17T01:13:01.0349837Z   cache-read-only: false
+build	Setup Gradle	2026-04-17T01:13:01.0350055Z   cache-write-only: false
+build	Setup Gradle	2026-04-17T01:13:01.0350281Z   cache-overwrite-existing: false
+build	Setup Gradle	2026-04-17T01:13:01.0350577Z   gradle-home-cache-includes: caches
+build	Setup Gradle	notifications
+build	Setup Gradle	
+build	Setup Gradle	2026-04-17T01:13:01.0350891Z   gradle-home-cache-cleanup: false
+build	Setup Gradle	2026-04-17T01:13:01.0351144Z   add-job-summary: always
+build	Setup Gradle	2026-04-17T01:13:01.0351383Z   add-job-summary-as-pr-comment: never
+build	Setup Gradle	2026-04-17T01:13:01.0351641Z   dependency-graph: disabled
+build	Setup Gradle	2026-04-17T01:13:01.0351906Z   dependency-graph-continue-on-failure: true
+build	Setup Gradle	2026-04-17T01:13:01.0352183Z   build-scan-publish: false
+build	Setup Gradle	2026-04-17T01:13:01.0352429Z   validate-wrappers: false
+build	Setup Gradle	2026-04-17T01:13:01.0352648Z   generate-job-summary: true
+build	Setup Gradle	2026-04-17T01:13:01.0352894Z   gradle-home-cache-strict-match: false
+build	Setup Gradle	2026-04-17T01:13:01.0353153Z   workflow-job-context: null
+build	Setup Gradle	2026-04-17T01:13:01.0353572Z   github-token: ***
+build	Setup Gradle	2026-04-17T01:13:01.0353768Z env:
+build	Setup Gradle	2026-04-17T01:13:01.0354053Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Setup Gradle	2026-04-17T01:13:01.0354506Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Setup Gradle	2026-04-17T01:13:01.0355032Z ##[endgroup]
+build	Setup Gradle	2026-04-17T01:13:02.1790075Z Merged default JDK locations into /home/runner/.m2/toolchains.xml
+build	Setup Gradle	2026-04-17T01:13:02.1792326Z ##[group]Restore Gradle state from cache
+build	Setup Gradle	2026-04-17T01:13:02.3551520Z ##[warning]Failed to restore gradle-home-v1|Linux|build[8e946f3d5d9249a6a572eac654cf33f4]-2931b9eb2cb95f65cbac06a08b7f0cfa3a9d4abe: Error: Cache service responded with 400
+build	Setup Gradle	2026-04-17T01:13:02.3655184Z Gradle User Home cache not found. Will initialize empty.
+build	Setup Gradle	2026-04-17T01:13:02.3656162Z ##[endgroup]
+build	Setup Gradle	2026-04-17T01:13:02.5360118Z ##[group]Provision Gradle 8.4
+build	Setup Gradle	2026-04-17T01:13:02.5910018Z ##[warning]Restore Gradle distribution 8.4 failed: Error: Cache service responded with 400
+build	Setup Gradle	2026-04-17T01:13:02.5916806Z Gradle distribution 8.4 not found in cache. Will download.
+build	Setup Gradle	2026-04-17T01:13:03.6710166Z Downloaded https://services.gradle.org/distributions/gradle-8.4-bin.zip to /home/runner/gradle-installations/downloads/gradle-8.4-bin.zip (size 130979468)
+build	Setup Gradle	2026-04-17T01:13:03.6835755Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/PhoneAIOS/PhoneAIOS --files-from manifest.txt --use-compress-program zstdmt
+build	Setup Gradle	2026-04-17T01:13:03.8553669Z ##[warning]Save Gradle distribution 8.4 failed: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0H4nhaQAAAAD5TwdrBWjeTZx3uG0m+WJLREVOMzAxMDAwMTAxMDM3AEVkZ2U=
+build	Setup Gradle	2026-04-17T01:13:03.8571982Z [command]/usr/bin/unzip -o -q /home/runner/gradle-installations/downloads/gradle-8.4-bin.zip
+build	Setup Gradle	2026-04-17T01:13:04.9282831Z Extracted Gradle 8.4 to /home/runner/gradle-installations/installs/gradle-8.4
+build	Setup Gradle	2026-04-17T01:13:04.9284602Z Provisioned Gradle executable /home/runner/gradle-installations/installs/gradle-8.4/bin/gradle
+build	Setup Gradle	2026-04-17T01:13:04.9285883Z ##[endgroup]
+build	Build with Gradle	∩╗┐2026-04-17T01:13:04.9429008Z ##[group]Run gradle assembleDebug
+build	Build with Gradle	2026-04-17T01:13:04.9429386Z [36;1mgradle assembleDebug[0m
+build	Build with Gradle	2026-04-17T01:13:04.9455222Z shell: /usr/bin/bash -e {0}
+build	Build with Gradle	2026-04-17T01:13:04.9455488Z env:
+build	Build with Gradle	2026-04-17T01:13:04.9455787Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T01:13:04.9456272Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T01:13:04.9456655Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+build	Build with Gradle	2026-04-17T01:13:04.9456949Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+build	Build with Gradle	2026-04-17T01:13:04.9457230Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+build	Build with Gradle	2026-04-17T01:13:04.9457659Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+build	Build with Gradle	2026-04-17T01:13:04.9458116Z   DEVELOCITY_AUTO_INJECTION_CUSTOM_VALUE: gradle-actions
+build	Build with Gradle	2026-04-17T01:13:04.9458437Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+build	Build with Gradle	2026-04-17T01:13:04.9458686Z ##[endgroup]
+build	Build with Gradle	2026-04-17T01:13:06.1211249Z 
+build	Build with Gradle	2026-04-17T01:13:06.1218967Z Welcome to Gradle 8.4!
+build	Build with Gradle	2026-04-17T01:13:06.1219483Z 
+build	Build with Gradle	2026-04-17T01:13:06.1219655Z Here are the highlights of this release:
+build	Build with Gradle	2026-04-17T01:13:06.1220166Z  - Compiling and testing with Java 21
+build	Build with Gradle	2026-04-17T01:13:06.1220603Z  - Faster Java compilation on Windows
+build	Build with Gradle	2026-04-17T01:13:06.1221071Z  - Role focused dependency configurations creation
+build	Build with Gradle	2026-04-17T01:13:06.1221416Z 
+build	Build with Gradle	2026-04-17T01:13:06.1221724Z For more details see https://docs.gradle.org/8.4/release-notes.html
+build	Build with Gradle	2026-04-17T01:13:06.1222189Z 
+build	Build with Gradle	2026-04-17T01:13:06.7194318Z Starting a Gradle Daemon (subsequent builds will be faster)
+build	Build with Gradle	2026-04-17T01:13:49.2225194Z > Task :app:preBuild UP-TO-DATE
+build	Build with Gradle	2026-04-17T01:13:49.2239308Z > Task :app:preDebugBuild UP-TO-DATE
+build	Build with Gradle	2026-04-17T01:13:49.2262692Z > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+build	Build with Gradle	2026-04-17T01:13:49.3193873Z > Task :app:checkKotlinGradlePluginConfigurationErrors
+build	Build with Gradle	2026-04-17T01:14:05.6203970Z > Task :app:generateDebugResValues
+build	Build with Gradle	2026-04-17T01:14:05.6205301Z > Task :app:dataBindingMergeDependencyArtifactsDebug
+build	Build with Gradle	2026-04-17T01:14:05.6206186Z > Task :app:generateDebugResources
+build	Build with Gradle	2026-04-17T01:14:07.4226087Z > Task :app:packageDebugResources
+build	Build with Gradle	2026-04-17T01:14:08.4193801Z > Task :app:mergeDebugResources
+build	Build with Gradle	2026-04-17T01:14:08.6209406Z > Task :app:parseDebugLocalResources
+build	Build with Gradle	2026-04-17T01:14:08.6252860Z > Task :app:checkDebugAarMetadata
+build	Build with Gradle	2026-04-17T01:14:08.6253566Z > Task :app:mapDebugSourceSetPaths
+build	Build with Gradle	2026-04-17T01:14:09.0198650Z > Task :app:dataBindingGenBaseClassesDebug
+build	Build with Gradle	2026-04-17T01:14:09.0216732Z > Task :app:createDebugCompatibleScreenManifests
+build	Build with Gradle	2026-04-17T01:14:09.0217623Z > Task :app:extractDeepLinksDebug
+build	Build with Gradle	2026-04-17T01:14:09.2289470Z 
+build	Build with Gradle	2026-04-17T01:14:09.2294590Z > Task :app:processDebugMainManifest
+build	Build with Gradle	2026-04-17T01:14:09.2296226Z package="com.phoneaios.app" found in source AndroidManifest.xml: /home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/AndroidManifest.xml.
+build	Build with Gradle	2026-04-17T01:14:09.2297907Z Setting the namespace via the package attribute in the source AndroidManifest.xml is no longer supported, and the value is ignored.
+build	Build with Gradle	2026-04-17T01:14:09.2299811Z Recommendation: remove package="com.phoneaios.app" from the source AndroidManifest.xml: /home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/AndroidManifest.xml.
+build	Build with Gradle	2026-04-17T01:14:09.3195228Z 
+build	Build with Gradle	2026-04-17T01:14:09.3224697Z > Task :app:processDebugManifest
+build	Build with Gradle	2026-04-17T01:14:12.0199894Z > Task :app:javaPreCompileDebug
+build	Build with Gradle	2026-04-17T01:14:12.0254239Z > Task :app:mergeDebugShaders
+build	Build with Gradle	2026-04-17T01:14:12.1216047Z > Task :app:compileDebugShaders NO-SOURCE
+build	Build with Gradle	2026-04-17T01:14:12.1245493Z > Task :app:generateDebugAssets UP-TO-DATE
+build	Build with Gradle	2026-04-17T01:14:12.1246207Z > Task :app:mergeDebugAssets
+build	Build with Gradle	2026-04-17T01:14:12.1292789Z > Task :app:compressDebugAssets
+build	Build with Gradle	2026-04-17T01:14:14.3201060Z > Task :app:desugarDebugFileDependencies
+build	Build with Gradle	2026-04-17T01:14:14.3247598Z > Task :app:mergeDebugJniLibFolders
+build	Build with Gradle	2026-04-17T01:14:14.4193535Z > Task :app:checkDebugDuplicateClasses
+build	Build with Gradle	2026-04-17T01:14:14.5193196Z > Task :app:mergeDebugNativeLibs
+build	Build with Gradle	2026-04-17T01:14:39.3196014Z > Task :app:processDebugManifestForPackage
+build	Build with Gradle	2026-04-17T01:14:41.3198846Z > Task :app:mergeLibDexDebug
+build	Build with Gradle	2026-04-17T01:14:43.5195197Z 
+build	Build with Gradle	2026-04-17T01:14:43.5225601Z > Task :app:stripDebugDebugSymbols
+build	Build with Gradle	2026-04-17T01:14:43.5255558Z Unable to strip the following libraries, packaging them as they are: libmediapipe_tasks_text_jni.so.
+build	Build with Gradle	2026-04-17T01:14:44.1205230Z 
+build	Build with Gradle	2026-04-17T01:14:44.1215518Z > Task :app:processDebugResources
+build	Build with Gradle	2026-04-17T01:14:44.4208218Z > Task :app:mergeExtDexDebug
+build	Build with Gradle	2026-04-17T01:14:46.0216070Z > Task :app:validateSigningDebug
+build	Build with Gradle	2026-04-17T01:14:52.3193319Z > Task :app:writeDebugAppMetadata
+build	Build with Gradle	2026-04-17T01:14:52.3215805Z > Task :app:writeDebugSigningConfigVersions
+build	Build with Gradle	2026-04-17T01:14:59.0200458Z 
+build	Build with Gradle	2026-04-17T01:14:59.0201434Z > Task :app:kaptGenerateStubsDebugKotlin FAILED
+build	Build with Gradle	2026-04-17T01:14:59.0216436Z e: file:///home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/java/com/phoneaios/app/ActionExecutor.kt:62:9 Expecting member declaration
+build	Build with Gradle	2026-04-17T01:14:59.0218355Z e: file:///home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/java/com/phoneaios/app/ActionExecutor.kt:62:17 Expecting member declaration
+build	Build with Gradle	2026-04-17T01:14:59.0220034Z e: file:///home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/java/com/phoneaios/app/ActionExecutor.kt:62:19 Expecting member declaration
+build	Build with Gradle	2026-04-17T01:14:59.0221655Z e: file:///home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/java/com/phoneaios/app/ActionExecutor.kt:62:37 Expecting member declaration
+build	Build with Gradle	2026-04-17T01:14:59.0223188Z e: file:///home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/java/com/phoneaios/app/ActionExecutor.kt:62:38 Expecting member declaration
+build	Build with Gradle	2026-04-17T01:14:59.0225016Z e: file:///home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/java/com/phoneaios/app/ActionExecutor.kt:64:1 Expecting a top level declaration
+build	Build with Gradle	2026-04-17T01:14:59.1214304Z 
+build	Build with Gradle	2026-04-17T01:14:59.1247966Z FAILURE: Build failed with an exception.
+build	Build with Gradle	2026-04-17T01:14:59.1275271Z 
+build	Build with Gradle	2026-04-17T01:14:59.1283952Z * What went wrong:
+build	Build with Gradle	2026-04-17T01:14:59.1305570Z Execution failed for task ':app:kaptGenerateStubsDebugKotlin'.
+build	Build with Gradle	2026-04-17T01:14:59.1336092Z > A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+build	Build with Gradle	2026-04-17T01:14:59.1442540Z    > Compilation error. See log for more details
+build	Build with Gradle	2026-04-17T01:14:59.1455389Z 
+build	Build with Gradle	2026-04-17T01:14:59.1485396Z * Try:
+build	Build with Gradle	2026-04-17T01:14:59.2222616Z > Run with --stacktrace option to get the stack trace.
+build	Build with Gradle	2026-04-17T01:14:59.2223273Z 30 actionable tasks: 30 executed
+build	Build with Gradle	2026-04-17T01:14:59.2258829Z > Run with --info or --debug option to get more log output.
+build	Build with Gradle	2026-04-17T01:14:59.2287884Z > Run with --scan to get full insights.
+build	Build with Gradle	2026-04-17T01:14:59.2345487Z > Get more help at https://help.gradle.org.
+build	Build with Gradle	2026-04-17T01:14:59.2375078Z 
+build	Build with Gradle	2026-04-17T01:14:59.2395799Z BUILD FAILED in 1m 54s
+build	Build with Gradle	2026-04-17T01:14:59.7158482Z ##[error]Process completed with exit code 1.
+build	Create Issue on Build Failure	∩╗┐2026-04-17T01:14:59.7229410Z ##[group]Run gh issue create --title "Build Failure: 2931b9eb2cb95f65cbac06a08b7f0cfa3a9d4abe" --body "The latest build failed. Check logs: https://github.com/Devil1716/PhoneAIOS/actions/runs/24542545155"
+build	Create Issue on Build Failure	2026-04-17T01:14:59.7230809Z [36;1mgh issue create --title "Build Failure: 2931b9eb2cb95f65cbac06a08b7f0cfa3a9d4abe" --body "The latest build failed. Check logs: https://github.com/Devil1716/PhoneAIOS/actions/runs/24542545155"[0m
+build	Create Issue on Build Failure	2026-04-17T01:14:59.7253923Z shell: /usr/bin/bash -e {0}
+build	Create Issue on Build Failure	2026-04-17T01:14:59.7254159Z env:
+build	Create Issue on Build Failure	2026-04-17T01:14:59.7254445Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Create Issue on Build Failure	2026-04-17T01:14:59.7255098Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Create Issue on Build Failure	2026-04-17T01:14:59.7255490Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+build	Create Issue on Build Failure	2026-04-17T01:14:59.7255774Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+build	Create Issue on Build Failure	2026-04-17T01:14:59.7256245Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+build	Create Issue on Build Failure	2026-04-17T01:14:59.7256657Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+build	Create Issue on Build Failure	2026-04-17T01:14:59.7257170Z   DEVELOCITY_AUTO_INJECTION_CUSTOM_VALUE: gradle-actions
+build	Create Issue on Build Failure	2026-04-17T01:14:59.7257476Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+build	Create Issue on Build Failure	2026-04-17T01:14:59.7257942Z   GH_TOKEN: ***
+build	Create Issue on Build Failure	2026-04-17T01:14:59.7258129Z ##[endgroup]
+build	Create Issue on Build Failure	2026-04-17T01:15:00.9134720Z https://github.com/Devil1716/PhoneAIOS/issues/8
+build	Post Setup Gradle	∩╗┐2026-04-17T01:15:00.9332797Z Post job cleanup.
+build	Post Setup Gradle	2026-04-17T01:15:01.1647860Z In post-action step
+build	Post Setup Gradle	2026-04-17T01:15:01.1655461Z Stopping all Gradle daemons before saving Gradle User Home state
+build	Post Setup Gradle	2026-04-17T01:15:01.1656320Z Stopping Gradle daemons for /home/runner/gradle-installations/installs/gradle-8.4
+build	Post Setup Gradle	2026-04-17T01:15:01.1675659Z [command]/home/runner/gradle-installations/installs/gradle-8.4/bin/gradle --stop
+build	Post Setup Gradle	2026-04-17T01:15:01.9598135Z Stopping Daemon(s)
+build	Post Setup Gradle	2026-04-17T01:15:01.9598785Z 1 Daemon stopped
+build	Post Setup Gradle	2026-04-17T01:15:01.9718304Z ##[group]Caching Gradle state
+build	Post Setup Gradle	2026-04-17T01:15:02.2644040Z Caching dependencies with path '/home/runner/.gradle/caches/modules-*/files-*/*/*/*/*' and cache key: gradle-dependencies-v1-7cc169a66f0dc8673f5247e3f9460f9b
+build	Post Setup Gradle	2026-04-17T01:15:02.3196199Z Caching instrumented-jars with path '/home/runner/.gradle/caches/jars-*/*/' and cache key: gradle-instrumented-jars-v1-cc2a31f6a10cbad895d35a26d8d85dcf
+build	Post Setup Gradle	2026-04-17T01:15:02.4112787Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/PhoneAIOS/PhoneAIOS --files-from manifest.txt --use-compress-program zstdmt
+build	Post Setup Gradle	2026-04-17T01:15:02.7048609Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/PhoneAIOS/PhoneAIOS --files-from manifest.txt --use-compress-program zstdmt
+build	Post Setup Gradle	2026-04-17T01:15:03.6211187Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/modules-*/files-*/*/*/*/*' and key: gradle-dependencies-v1-7cc169a66f0dc8673f5247e3f9460f9b: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0l4nhaQAAAAAaREZPLyWHSq/Pdw03CEIdREVOMzAxMDAwMTA0MDM5AEVkZ2U=
+build	Post Setup Gradle	2026-04-17T01:15:03.8303346Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/jars-*/*/' and key: gradle-instrumented-jars-v1-cc2a31f6a10cbad895d35a26d8d85dcf: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0l4nhaQAAAAD1CMpbi4ARQb+ozmXJY4f2REVOMzAxMDAwMTA2MDMxAEVkZ2U=
+build	Post Setup Gradle	2026-04-17T01:15:03.9253217Z Caching Gradle User Home with cache key: gradle-home-v1|Linux|build[8e946f3d5d9249a6a572eac654cf33f4]-2931b9eb2cb95f65cbac06a08b7f0cfa3a9d4abe
+build	Post Setup Gradle	2026-04-17T01:15:03.9338237Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/PhoneAIOS/PhoneAIOS --files-from manifest.txt --use-compress-program zstdmt
+build	Post Setup Gradle	2026-04-17T01:15:04.4969440Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches,/home/runner/.gradle/notifications,/home/runner/.gradle/.setup-gradle' and key: gradle-home-v1|Linux|build[8e946f3d5d9249a6a572eac654cf33f4]-2931b9eb2cb95f65cbac06a08b7f0cfa3a9d4abe: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0mInhaQAAAAAb1SvdCGnDQpqvwIq5eXK2REVOMzAxMDAwMTAxMDIzAEVkZ2U=
+build	Post Setup Gradle	2026-04-17T01:15:04.4972252Z ##[endgroup]
+build	Post Setup Gradle	2026-04-17T01:15:04.4973752Z Generating Job Summary
+build	Post Setup Gradle	2026-04-17T01:15:04.4987437Z Completed post-action step
+build	Post set up JDK 17	∩╗┐2026-04-17T01:15:04.5163855Z Post job cleanup.
+build	Post Run actions/checkout@v4	∩╗┐2026-04-17T01:15:04.6894179Z Post job cleanup.
+build	Post Run actions/checkout@v4	2026-04-17T01:15:04.7835646Z [command]/usr/bin/git version
+build	Post Run actions/checkout@v4	2026-04-17T01:15:04.7871457Z git version 2.53.0
+build	Post Run actions/checkout@v4	2026-04-17T01:15:04.7911671Z Temporarily overriding HOME='/home/runner/work/_temp/f2ccab70-dad8-4686-8f6e-c4fae8c6a5d6' before making global git config changes
+build	Post Run actions/checkout@v4	2026-04-17T01:15:04.7912583Z Adding repository directory to the temporary git global config as a safe directory
+build	Post Run actions/checkout@v4	2026-04-17T01:15:04.7919097Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/PhoneAIOS/PhoneAIOS
+build	Post Run actions/checkout@v4	2026-04-17T01:15:04.7955081Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Post Run actions/checkout@v4	2026-04-17T01:15:04.7987490Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Post Run actions/checkout@v4	2026-04-17T01:15:04.8227209Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Post Run actions/checkout@v4	2026-04-17T01:15:04.8251776Z http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-04-17T01:15:04.8267253Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-04-17T01:15:04.8298951Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Post Run actions/checkout@v4	2026-04-17T01:15:04.8530049Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Post Run actions/checkout@v4	2026-04-17T01:15:04.8562083Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Complete job	∩╗┐2026-04-17T01:15:04.8912648Z Cleaning up orphan processes
+build	Complete job	2026-04-17T01:15:04.9175850Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, actions/setup-java@v4, gradle/actions/setup-gradle@v3. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
