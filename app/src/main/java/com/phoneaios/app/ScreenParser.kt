@@ -14,7 +14,7 @@ class ScreenParser {
         return builder.toString()
     }
 
-    private fun collectContent(node: AccessibilityNodeInfo, builder: StringBuilder, uniqueItems: MutableSetOf<String>) {
+    private fun collectContent(node: AccessibilityNodeInfo, builder: StringBuilder, uniqueItems: MutableSet<String>) {
         val text = node.text?.toString() ?: ""
         val contentDesc = node.contentDescription?.toString() ?: ""
         val id = node.viewIdResourceName ?: ""

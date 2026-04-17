@@ -42,6 +42,7 @@ dependencies {
     
     // MediaPipe & Gemma
     implementation 'com.google.mediapipe:tasks-text:0.10.14'
+    implementation 'com.google.mediapipe:tasks-genai:0.10.14'
     
     // Lifecycle & Coroutines
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0'

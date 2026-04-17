@@ -1,7 +1,7 @@
 package com.phoneaios.app
 
 import android.content.Context
-import com.google.mediapipe.tasks.text.llminference.LlmInference
+import com.google.mediapipe.tasks.genai.llminference.LlmInference
 import java.io.File
 
 class AIBrain(private val context: Context) {
