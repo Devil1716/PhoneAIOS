@@ -1,3 +1,5 @@
+package com.phoneaios.app
+
 import android.content.Context
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.Dispatchers
