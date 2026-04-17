@@ -9,7 +9,8 @@ enum class ActionType {
     WAIT,
     ENTER,
     SCROLL_FORWARD,
-    GLOBAL_BACK
+    GLOBAL_BACK,
+    LONG_PRESS
 }
 
 data class Action(

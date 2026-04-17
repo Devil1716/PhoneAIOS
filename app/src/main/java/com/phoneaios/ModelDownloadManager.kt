@@ -10,24 +10,33 @@ import android.os.Build
 import android.os.Environment
 import java.io.File
 
+enum class ModelType(val displayName: String, val fileName: String, val url: String) {
+    GEMMA_1_1_2B("Gemma 1.1 2B (Default)", "gemma-2b-it.task", "https://huggingface.co/xianbao/mediapipe-gemma-2b-it/resolve/main/gemma-2b-it.task?download=1"),
+    GEMMA_2_2B("Gemma 2 2B", "gemma-2-2b-it.task", "https://storage.googleapis.com/mediapipe-models/llm_inference/gemma2-2b-it-cpu-int4.bin"),
+    GEMMA_3_1B("Gemma 3 1B", "gemma-3-1b-it.task", "https://pub-8df053a4792c4d74b7f2e02a9250fd0e.r2.dev/gemma-3-1b-it.task"),
+    GEMMA_3_270M("Gemma 3 270M (Ultra Light)", "gemma-3-270m-it.task", "https://pub-8df053a4792c4d74b7f2e02a9250fd0e.r2.dev/gemma-3-270m-it.task")
+}
+
 class ModelDownloadManager(private val context: Context) {
-    companion object {
-        const val MODEL_FILE_NAME = "gemma-2b-it.task"
-        private const val MODEL_URL =
-            "https://huggingface.co/xianbao/mediapipe-gemma-2b-it/resolve/main/gemma-2b-it.task?download=1"
-    }
+    private var currentModelType = ModelType.GEMMA_1_1_2B
 
     private val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
     private var downloadId: Long = -1L
     private var receiver: BroadcastReceiver? = null
 
+    fun setModelType(type: ModelType) {
+        currentModelType = type
+    }
+
+    fun getModelType(): ModelType = currentModelType
+
     fun resolveModelFile(): File? {
         val downloadFolder = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-            "PhoneAIOS/model/$MODEL_FILE_NAME"
+            "PhoneAIOS/${currentModelType.name}/${currentModelType.fileName}"
         )
-        val appExternalFolder = File(context.getExternalFilesDir(null), MODEL_FILE_NAME)
-        val internalFile = File(context.filesDir, MODEL_FILE_NAME)
+        val appExternalFolder = File(context.getExternalFilesDir(null), currentModelType.fileName)
+        val internalFile = File(context.filesDir, currentModelType.fileName)
         return listOf(downloadFolder, appExternalFolder, internalFile)
             .firstOrNull { it.exists() && it.length() > 1024L * 1024L }
     }
@@ -44,15 +53,15 @@ class ModelDownloadManager(private val context: Context) {
             return
         }
 
-        val request = DownloadManager.Request(Uri.parse(MODEL_URL))
-            .setTitle("PhoneAIOS model")
-            .setDescription("Downloading Gemma 2B model for on-device inference")
+        val request = DownloadManager.Request(Uri.parse(currentModelType.url))
+            .setTitle("PhoneAIOS Model: ${currentModelType.displayName}")
+            .setDescription("Downloading ${currentModelType.displayName} for on-device inference")
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
             .setAllowedOverMetered(true)
             .setAllowedOverRoaming(true)
             .setDestinationInExternalPublicDir(
                 Environment.DIRECTORY_DOWNLOADS,
-                "PhoneAIOS/model/$MODEL_FILE_NAME"
+                "PhoneAIOS/${currentModelType.name}/${currentModelType.fileName}"
             )
 
         downloadId = downloadManager.enqueue(request)

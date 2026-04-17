@@ -105,6 +105,19 @@ class PhoneControlService : AccessibilityService() {
         return dispatchPath(path, durationMs)
     }
 
+    fun longPress(x: Float, y: Float): Boolean {
+        val path = Path().apply { moveTo(x, y) }
+        return dispatchPath(path, 1500L) // Normal long press duration
+    }
+
+    fun findNodeByDescription(query: String): Boolean {
+        val root = rootInActiveWindow ?: return false
+        return findNode(root) { node ->
+            val description = node.contentDescription?.toString().orEmpty()
+            description.contains(query, ignoreCase = true)
+        }?.let { clickNode(it) } ?: false
+    }
+
     private fun dispatchPath(path: Path, durationMs: Long): Boolean {
         val gesture = GestureDescription.Builder()
             .addStroke(GestureDescription.StrokeDescription(path, 0L, durationMs))

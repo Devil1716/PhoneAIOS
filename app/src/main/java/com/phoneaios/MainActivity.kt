@@ -12,12 +12,14 @@ import android.provider.Settings
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
-import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.ScrollView
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var modelDownloadManager: ModelDownloadManager
     private lateinit var aiBrain: AIBrain
     private var speechRecognizer: SpeechRecognizer? = null
+    private val actionHistory = mutableListOf<String>()
 
     private lateinit var statusSub: TextView
     private lateinit var downloadStatus: TextView
@@ -47,6 +50,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var sendButton: ImageButton
     private lateinit var actionLog: TextView
     private lateinit var logScroll: ScrollView
+    private lateinit var modelSpinner: Spinner
+    private lateinit var accessibilityBtn: ImageButton
 
     private val permissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -66,6 +71,7 @@ class MainActivity : AppCompatActivity() {
         requestRuntimePermissions()
         initRecognizer()
         updateStatus()
+        setupModelSelection()
     }
 
     override fun onDestroy() {
@@ -87,6 +93,27 @@ class MainActivity : AppCompatActivity() {
         sendButton = findViewById(R.id.sendButton)
         actionLog = findViewById(R.id.actionLog)
         logScroll = findViewById(R.id.logScroll)
+        modelSpinner = findViewById(R.id.modelSpinner)
+        accessibilityBtn = findViewById(R.id.accessibilityBtn)
+    }
+
+    private fun setupModelSelection() {
+        val models = ModelType.values()
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, models.map { it.displayName })
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        modelSpinner.adapter = adapter
+        
+        modelSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                modelDownloadManager.setModelType(models[position])
+                updateStatus()
+                // Re-init brain with new model if it exists
+                if (modelDownloadManager.isModelReady()) {
+                    aiBrain = AIBrain(this@MainActivity)
+                }
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
     }
 
     private fun setupUi() {
@@ -127,6 +154,10 @@ class MainActivity : AppCompatActivity() {
         startBubbleButton.setOnClickListener { startBubbleService() }
         voiceButton.setOnClickListener { startListening() }
         sendButton.setOnClickListener { submitTypedCommand() }
+        accessibilityBtn.setOnClickListener {
+            startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
+            Toast.makeText(this, "Find PhoneAIOS and enable it", Toast.LENGTH_LONG).show()
+        }
         commandInput.setOnEditorActionListener { _, _, _ ->
             submitTypedCommand()
             true
@@ -192,26 +223,49 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleCommand(command: String) {
         appendLog("User: $command")
-        val plan = promptEngine.parseCommand(command)
-        if (plan.isNotEmpty()) {
-            executePlan(plan)
+        actionHistory.clear()
+        
+        val staticPlan = promptEngine.parseCommand(command)
+        if (staticPlan.isNotEmpty()) {
+            executePlan(staticPlan)
             return
         }
+        
         if (!aiBrain.hasModel()) {
-            appendLog("Gemma model is not ready yet. Download it first or place it in /sdcard/Download/PhoneAIOS/model/.")
+            appendLog("Gemma model is not ready yet. Download it first.")
             return
         }
+
         lifecycleScope.launch {
-            val screenContext = withContext(Dispatchers.Default) {
-                ScreenParser().parseScreen(PhoneControlService.instance?.rootInActiveWindow)
-            }
-            val generated = withContext(Dispatchers.Default) {
-                aiBrain.generateActions(command, screenContext)
-            }
-            if (generated.isEmpty()) {
-                appendLog("Gemma could not build an action plan.")
-            } else {
-                executePlan(generated)
+            var isFinished = false
+            var steps = 0
+            while (!isFinished && steps < 10) {
+                val screenContext = withContext(Dispatchers.Default) {
+                    ScreenParser().parseScreen(PhoneControlService.instance?.rootInActiveWindow)
+                }
+                val historyStr = if (actionHistory.isEmpty()) "(No history)" else actionHistory.joinToString("\n")
+                
+                val generatedActions = withContext(Dispatchers.Default) {
+                    aiBrain.generateActions(command, screenContext, historyStr)
+                }
+                
+                if (generatedActions.isEmpty()) {
+                    appendLog("Agent could not decide next step.")
+                    break
+                }
+                
+                val action = generatedActions.first()
+                actionHistory.add(action.spokenSummary)
+                
+                if (action.type == ActionType.ENTER && action.spokenSummary.contains("done", ignoreCase = true)) {
+                    appendLog("Task Complete: ${action.spokenSummary}")
+                    isFinished = true
+                    break
+                }
+
+                executePlan(generatedActions)
+                steps++
+                delay(1500) // Wait for screen to settle before next step
             }
         }
     }
@@ -253,8 +307,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun isAccessibilityEnabled(): Boolean {
+        return PhoneControlService.instance != null
+    }
+
     private fun updateStatus() {
+        val accEnabled = isAccessibilityEnabled()
+        accessibilityBtn.setImageResource(if (accEnabled) android.R.drawable.ic_menu_manage else android.R.drawable.stat_notify_error)
+        accessibilityBtn.imageTintList = android.content.res.ColorStateList.valueOf(
+            if (accEnabled) ContextCompat.getColor(this, android.R.color.holo_green_light)
+            else ContextCompat.getColor(this, android.R.color.holo_red_light)
+        )
+
         statusSub.text = when {
+            !accEnabled -> "Accessibility Service DISABLED"
             modelDownloadManager.isModelReady() -> getString(R.string.status_model_ready)
             else -> getString(R.string.status_permissions_needed)
         }

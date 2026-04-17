@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.Log
 import com.google.mediapipe.tasks.genai.llminference.LlmInference
 import org.json.JSONArray
+import org.json.JSONObject
+import java.io.File
 
 class AIBrain(context: Context) {
     private val voiceFeedbackManager = VoiceFeedbackManager(context)
@@ -28,59 +30,62 @@ class AIBrain(context: Context) {
         voiceFeedbackManager.speak(message)
     }
 
+    private fun loadPrompt(name: String): String {
+        return runCatching {
+            context.assets.open("prompts/$name").bufferedReader().use { it.readText() }
+        }.getOrElse { "" }
+    }
+
     fun close() {
         llmInference?.close()
         voiceFeedbackManager.shutdown()
     }
 
-    fun generateActions(prompt: String, screenContext: String): List<Action> {
+    fun generateActions(task: String, screenContext: String, history: String = "(No history)"): List<Action> {
         val inference = llmInference ?: return emptyList()
-        val plannerPrompt = """
-            You are PhoneAIOS, an offline Android agent.
-            Convert the user request into a JSON array of actions.
-            Only use these action types: OPEN_APP, CLICK_TEXT, TYPE_TEXT, WAIT, ENTER, SCROLL_FORWARD, GLOBAL_BACK.
-            Each item may include: type, text, packageName, durationMs, isSensitive, spokenSummary.
-            Return JSON only.
+        val deciderPromptTemplate = loadPrompt("decider_en.md")
+        if (deciderPromptTemplate.isEmpty()) return emptyList()
 
-            Screen:
-            $screenContext
+        val fullPrompt = deciderPromptTemplate
+            .replace("{task}", task)
+            .replace("{history}", history) + "\n\nSCREEN_CONTEXT:\n$screenContext"
 
-            User request:
-            $prompt
-        """.trimIndent()
-
-        val raw = runCatching { inference.generateResponse(plannerPrompt) }.getOrElse { error ->
-            Log.e("AIBrain", "Gemma inference failed: ${error.message}", error)
+        val raw = runCatching { inference.generateResponse(fullPrompt) }.getOrElse { error ->
+            Log.e("AIBrain", "Decider inference failed: ${error.message}", error)
             return emptyList()
         }
-        return parseActions(raw)
+        
+        Log.d("AIBrain", "Raw Decider Response: $raw")
+        return parseDeciderResponse(raw)
     }
 
-    private fun parseActions(raw: String): List<Action> {
-        val start = raw.indexOf('[')
-        val end = raw.lastIndexOf(']')
+    private fun parseDeciderResponse(raw: String): List<Action> {
+        val start = raw.indexOf('{')
+        val end = raw.lastIndexOf('}')
         if (start < 0 || end <= start) return emptyList()
+        
         return runCatching {
-            val array = JSONArray(raw.substring(start, end + 1))
-            buildList {
-                for (index in 0 until array.length()) {
-                    val item = array.getJSONObject(index)
-                    val type = runCatching { ActionType.valueOf(item.getString("type")) }.getOrNull() ?: continue
-                    add(
-                        Action(
-                            type = type,
-                            text = item.optNullableString("text"),
-                            packageName = item.optNullableString("packageName"),
-                            durationMs = item.optLong("durationMs", 800L),
-                            isSensitive = item.optBoolean("isSensitive", false),
-                            spokenSummary = item.optString("spokenSummary", type.name)
-                        )
-                    )
-                }
+            val json = JSONObject(raw.substring(start, end + 1))
+            val actionName = json.getString("action")
+            val params = json.optJSONObject("parameters") ?: JSONObject()
+            val reasoning = json.optString("reasoning", "No reasoning provided")
+
+            val type = when (actionName.lowercase()) {
+                "click" -> ActionType.CLICK_TEXT
+                "input" -> ActionType.TYPE_TEXT
+                "swipe" -> ActionType.SWIPE
+                "wait" -> ActionType.WAIT
+                "done" -> ActionType.ENTER // Or a specific success type
+                "long_press" -> ActionType.LONG_PRESS
+                else -> ActionType.WAIT
             }
-        }.getOrElse {
-            emptyList()
-        }
+
+            listOf(Action(
+                type = type,
+                text = params.optString("target_element").takeIf { it.isNotEmpty() } ?: params.optString("text"),
+                spokenSummary = reasoning
+            ))
+        }.getOrElse { emptyList() }
     }
 
     private fun org.json.JSONObject.optNullableString(key: String): String? {

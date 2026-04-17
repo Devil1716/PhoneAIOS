@@ -34,6 +34,11 @@ class ActionExecutor {
                 ActionType.ENTER -> service.submitCurrentInput()
                 ActionType.SCROLL_FORWARD -> service.scrollForward()
                 ActionType.GLOBAL_BACK -> service.globalBack()
+                ActionType.LONG_PRESS -> {
+                    if (action.x != null && action.y != null) {
+                        service.longPress(action.x, action.y)
+                    }
+                }
             }
             delay(650L)
         }
