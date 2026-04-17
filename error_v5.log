@@ -1,0 +1,81 @@
+﻿build	Build with Gradle	∩╗┐2026-04-17T00:54:01.8319768Z ##[group]Run gradle assembleDebug
+build	Build with Gradle	2026-04-17T00:54:01.8320140Z [36;1mgradle assembleDebug[0m
+build	Build with Gradle	2026-04-17T00:54:01.8343692Z shell: /usr/bin/bash -e {0}
+build	Build with Gradle	2026-04-17T00:54:01.8343961Z env:
+build	Build with Gradle	2026-04-17T00:54:01.8344263Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T00:54:01.8344762Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T00:54:01.8345180Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+build	Build with Gradle	2026-04-17T00:54:01.8345479Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+build	Build with Gradle	2026-04-17T00:54:01.8346128Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+build	Build with Gradle	2026-04-17T00:54:01.8346579Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+build	Build with Gradle	2026-04-17T00:54:01.8347115Z   DEVELOCITY_AUTO_INJECTION_CUSTOM_VALUE: gradle-actions
+build	Build with Gradle	2026-04-17T00:54:01.8347428Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+build	Build with Gradle	2026-04-17T00:54:01.8347679Z ##[endgroup]
+build	Build with Gradle	2026-04-17T00:54:03.7394028Z 
+build	Build with Gradle	2026-04-17T00:54:03.7395416Z Welcome to Gradle 9.4.1!
+build	Build with Gradle	2026-04-17T00:54:03.7396534Z 
+build	Build with Gradle	2026-04-17T00:54:03.7397025Z Here are the highlights of this release:
+build	Build with Gradle	2026-04-17T00:54:03.7397865Z  - Java 26 support
+build	Build with Gradle	2026-04-17T00:54:03.7398469Z  - Non-class-based JVM tests
+build	Build with Gradle	2026-04-17T00:54:03.7406096Z  - Enhanced console progress bar
+build	Build with Gradle	2026-04-17T00:54:03.7409313Z 
+build	Build with Gradle	2026-04-17T00:54:03.7410349Z For more details see https://docs.gradle.org/9.4.1/release-notes.html
+build	Build with Gradle	2026-04-17T00:54:03.7410925Z 
+build	Build with Gradle	2026-04-17T00:54:04.4381676Z Starting a Gradle Daemon (subsequent builds will be faster)
+build	Build with Gradle	2026-04-17T00:54:51.2416389Z 
+build	Build with Gradle	2026-04-17T00:54:51.2416475Z 
+build	Build with Gradle	2026-04-17T00:54:51.2426629Z FAILURE: Build completed with 3 failures.
+build	Build with Gradle	2026-04-17T00:54:51.2476024Z 
+build	Build with Gradle	2026-04-17T00:54:51.2476983Z [Incubating] Problems report is available at: file:///home/runner/work/PhoneAIOS/PhoneAIOS/build/reports/problems/problems-report.html
+build	Build with Gradle	2026-04-17T00:54:51.2503487Z 1: Task failed with an exception.
+build	Build with Gradle	2026-04-17T00:54:51.2505912Z 
+build	Build with Gradle	2026-04-17T00:54:51.2531188Z -----------
+build	Build with Gradle	2026-04-17T00:54:51.2557016Z * Where:
+build	Build with Gradle	2026-04-17T00:54:51.2557744Z Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+build	Build with Gradle	2026-04-17T00:54:51.2596339Z Build file '/home/runner/work/PhoneAIOS/PhoneAIOS/app/build.gradle' line: 2
+build	Build with Gradle	2026-04-17T00:54:51.2596978Z 
+build	Build with Gradle	2026-04-17T00:54:51.2597835Z You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+build	Build with Gradle	2026-04-17T00:54:51.2598913Z 
+build	Build with Gradle	2026-04-17T00:54:51.2606163Z * What went wrong:
+build	Build with Gradle	2026-04-17T00:54:51.2621474Z 
+build	Build with Gradle	2026-04-17T00:54:51.2624917Z A problem occurred evaluating project ':app'.
+build	Build with Gradle	2026-04-17T00:54:51.2626201Z > org/gradle/api/internal/HasConvention
+build	Build with Gradle	2026-04-17T00:54:51.2627080Z 
+build	Build with Gradle	2026-04-17T00:54:51.2627463Z * Try:
+build	Build with Gradle	2026-04-17T00:54:51.2628127Z > Run with --stacktrace option to get the stack trace.
+build	Build with Gradle	2026-04-17T00:54:51.2629072Z > Run with --info or --debug option to get more log output.
+build	Build with Gradle	2026-04-17T00:54:51.2630132Z > Run with --scan to get full insights from a Build Scan (powered by Develocity).
+build	Build with Gradle	2026-04-17T00:54:51.2631331Z > Get more help at https://help.gradle.org.
+build	Build with Gradle	2026-04-17T00:54:51.2632195Z ==============================================================================
+build	Build with Gradle	2026-04-17T00:54:51.2632819Z 
+build	Build with Gradle	2026-04-17T00:54:51.2633166Z 2: Task failed with an exception.
+build	Build with Gradle	2026-04-17T00:54:51.2633791Z -----------
+build	Build with Gradle	2026-04-17T00:54:51.2634345Z * What went wrong:
+build	Build with Gradle	2026-04-17T00:54:51.2635006Z A problem occurred configuring project ':app'.
+build	Build with Gradle	2026-04-17T00:54:51.2636264Z > compileSdkVersion is not specified. Please add it to build.gradle
+build	Build with Gradle	2026-04-17T00:54:51.2637061Z 
+build	Build with Gradle	2026-04-17T00:54:51.2637393Z * Try:
+build	Build with Gradle	2026-04-17T00:54:51.2638069Z > Run with --stacktrace option to get the stack trace.
+build	Build with Gradle	2026-04-17T00:54:51.2638941Z > Run with --info or --debug option to get more log output.
+build	Build with Gradle	2026-04-17T00:54:51.2639942Z > Run with --scan to get full insights from a Build Scan (powered by Develocity).
+build	Build with Gradle	2026-04-17T00:54:51.2640917Z > Get more help at https://help.gradle.org.
+build	Build with Gradle	2026-04-17T00:54:51.2641696Z ==============================================================================
+build	Build with Gradle	2026-04-17T00:54:51.2642761Z 
+build	Build with Gradle	2026-04-17T00:54:51.2643138Z 3: Task failed with an exception.
+build	Build with Gradle	2026-04-17T00:54:51.2643779Z -----------
+build	Build with Gradle	2026-04-17T00:54:51.2644295Z * What went wrong:
+build	Build with Gradle	2026-04-17T00:54:51.2645001Z Failed to query the value of property 'buildFlowServiceProperty'.
+build	Build with Gradle	2026-04-17T00:54:51.2646965Z > Could not isolate value org.jetbrains.kotlin.gradle.plugin.statistics.BuildFlowService$Parameters_Decorated@20349e01 of type BuildFlowService.Parameters
+build	Build with Gradle	2026-04-17T00:54:51.2649258Z For more on this, please refer to https://docs.gradle.org/9.4.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+build	Build with Gradle	2026-04-17T00:54:51.2651355Z    > A problem occurred configuring project ':app'.
+build	Build with Gradle	2026-04-17T00:54:51.2706394Z       > compileSdkVersion is not specified. Please add it to build.gradle
+build	Build with Gradle	2026-04-17T00:54:51.2712016Z 
+build	Build with Gradle	2026-04-17T00:54:51.2712409Z * Try:
+build	Build with Gradle	2026-04-17T00:54:51.2713094Z > Run with --stacktrace option to get the stack trace.
+build	Build with Gradle	2026-04-17T00:54:51.2714352Z > Run with --info or --debug option to get more log output.
+build	Build with Gradle	2026-04-17T00:54:51.2715407Z > Run with --scan to get full insights from a Build Scan (powered by Develocity).
+build	Build with Gradle	2026-04-17T00:54:51.2738081Z > Get more help at https://help.gradle.org.
+build	Build with Gradle	2026-04-17T00:54:51.2766302Z ==============================================================================
+build	Build with Gradle	2026-04-17T00:54:51.2809280Z 
+build	Build with Gradle	2026-04-17T00:54:51.2814271Z BUILD FAILED in 49s
+build	Build with Gradle	2026-04-17T00:54:51.7312419Z ##[error]Process completed with exit code 1.
