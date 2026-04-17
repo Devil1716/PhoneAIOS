@@ -1,0 +1,103 @@
+﻿build	Build with Gradle	∩╗┐2026-04-17T01:03:44.0508618Z ##[group]Run gradle assembleDebug
+build	Build with Gradle	2026-04-17T01:03:44.0509329Z [36;1mgradle assembleDebug[0m
+build	Build with Gradle	2026-04-17T01:03:44.0535590Z shell: /usr/bin/bash -e {0}
+build	Build with Gradle	2026-04-17T01:03:44.0535908Z env:
+build	Build with Gradle	2026-04-17T01:03:44.0536268Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T01:03:44.0536901Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T01:03:44.0537430Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+build	Build with Gradle	2026-04-17T01:03:44.0537851Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+build	Build with Gradle	2026-04-17T01:03:44.0538251Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+build	Build with Gradle	2026-04-17T01:03:44.0539203Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+build	Build with Gradle	2026-04-17T01:03:44.0539895Z   DEVELOCITY_AUTO_INJECTION_CUSTOM_VALUE: gradle-actions
+build	Build with Gradle	2026-04-17T01:03:44.0540336Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+build	Build with Gradle	2026-04-17T01:03:44.0540682Z ##[endgroup]
+build	Build with Gradle	2026-04-17T01:03:45.4339675Z 
+build	Build with Gradle	2026-04-17T01:03:45.4340649Z Welcome to Gradle 8.4!
+build	Build with Gradle	2026-04-17T01:03:45.4341442Z 
+build	Build with Gradle	2026-04-17T01:03:45.4341911Z Here are the highlights of this release:
+build	Build with Gradle	2026-04-17T01:03:45.4342627Z  - Compiling and testing with Java 21
+build	Build with Gradle	2026-04-17T01:03:45.4356955Z  - Faster Java compilation on Windows
+build	Build with Gradle	2026-04-17T01:03:45.4374763Z  - Role focused dependency configurations creation
+build	Build with Gradle	2026-04-17T01:03:45.4375515Z 
+build	Build with Gradle	2026-04-17T01:03:45.4376381Z For more details see https://docs.gradle.org/8.4/release-notes.html
+build	Build with Gradle	2026-04-17T01:03:45.4377262Z 
+build	Build with Gradle	2026-04-17T01:03:45.8310541Z Starting a Gradle Daemon (subsequent builds will be faster)
+build	Build with Gradle	2026-04-17T01:04:18.9382131Z > Task :app:preBuild UP-TO-DATE
+build	Build with Gradle	2026-04-17T01:04:18.9419370Z > Task :app:preDebugBuild UP-TO-DATE
+build	Build with Gradle	2026-04-17T01:04:19.0309989Z > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+build	Build with Gradle	2026-04-17T01:04:19.0339817Z > Task :app:checkKotlinGradlePluginConfigurationErrors
+build	Build with Gradle	2026-04-17T01:04:22.2309668Z > Task :app:dataBindingMergeDependencyArtifactsDebug FAILED
+build	Build with Gradle	2026-04-17T01:04:22.3339493Z 
+build	Build with Gradle	2026-04-17T01:04:22.3389676Z FAILURE: Build failed with an exception.
+build	Build with Gradle	2026-04-17T01:04:22.3419395Z 
+build	Build with Gradle	2026-04-17T01:04:22.3419817Z 2 actionable tasks: 2 executed
+build	Build with Gradle	2026-04-17T01:04:22.3446648Z * What went wrong:
+build	Build with Gradle	2026-04-17T01:04:22.3458484Z Execution failed for task ':app:dataBindingMergeDependencyArtifactsDebug'.
+build	Build with Gradle	2026-04-17T01:04:22.3460703Z > Configuration `:app:debugRuntimeClasspath` contains AndroidX dependencies, but the `android.useAndroidX` property is not enabled, which may cause runtime issues.
+build	Build with Gradle	2026-04-17T01:04:22.3462478Z   Set `android.useAndroidX=true` in the `gradle.properties` file and retry.
+build	Build with Gradle	2026-04-17T01:04:22.3463437Z   The following AndroidX dependencies are detected:
+build	Build with Gradle	2026-04-17T01:04:22.3464365Z   :app:debugRuntimeClasspath -> androidx.core:core-ktx:1.12.0
+build	Build with Gradle	2026-04-17T01:04:22.3465610Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.annotation:annotation:1.6.0
+build	Build with Gradle	2026-04-17T01:04:22.3480631Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.annotation:annotation:1.6.0 -> androidx.annotation:annotation-jvm:1.6.0
+build	Build with Gradle	2026-04-17T01:04:22.3482937Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.core:core:1.12.0
+build	Build with Gradle	2026-04-17T01:04:22.3484871Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.annotation:annotation-experimental:1.3.0
+build	Build with Gradle	2026-04-17T01:04:22.3487186Z   :app:debugRuntimeClasspath -> androidx.appcompat:appcompat:1.6.1 -> androidx.appcompat:appcompat-resources:1.6.1 -> androidx.collection:collection:1.1.0
+build	Build with Gradle	2026-04-17T01:04:22.3489680Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.core:core:1.12.0 -> androidx.concurrent:concurrent-futures:1.1.0
+build	Build with Gradle	2026-04-17T01:04:22.3493156Z   :app:debugRuntimeClasspath -> androidx.appcompat:appcompat:1.6.1 -> androidx.appcompat:appcompat-resources:1.6.1 -> androidx.vectordrawable:vectordrawable-animated:1.1.0 -> androidx.interpolator:interpolator:1.0.0
+build	Build with Gradle	2026-04-17T01:04:22.3496010Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.lifecycle:lifecycle-runtime:2.7.0
+build	Build with Gradle	2026-04-17T01:04:22.3498674Z   :app:debugRuntimeClasspath -> androidx.appcompat:appcompat:1.6.1 -> androidx.savedstate:savedstate:1.2.1 -> androidx.arch.core:core-common:2.2.0
+build	Build with Gradle	2026-04-17T01:04:22.3503158Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.fragment:fragment:1.3.6 -> androidx.loader:loader:1.0.0 -> androidx.lifecycle:lifecycle-livedata:2.7.0 -> androidx.arch.core:core-runtime:2.2.0
+build	Build with Gradle	2026-04-17T01:04:22.3505929Z   :app:debugRuntimeClasspath -> androidx.appcompat:appcompat:1.6.1 -> androidx.savedstate:savedstate:1.2.1 -> androidx.lifecycle:lifecycle-common:2.7.0
+build	Build with Gradle	2026-04-17T01:04:22.3508334Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.fragment:fragment:1.3.6 -> androidx.loader:loader:1.0.0 -> androidx.lifecycle:lifecycle-livedata:2.7.0
+build	Build with Gradle	2026-04-17T01:04:22.3510910Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.fragment:fragment:1.3.6 -> androidx.lifecycle:lifecycle-livedata-core:2.7.0
+build	Build with Gradle	2026-04-17T01:04:22.3512897Z   :app:debugRuntimeClasspath -> androidx.appcompat:appcompat:1.6.1 -> androidx.emoji2:emoji2:1.2.0 -> androidx.lifecycle:lifecycle-process:2.7.0
+build	Build with Gradle	2026-04-17T01:04:22.3539447Z   :app:debugRuntimeClasspath -> androidx.appcompat:appcompat:1.6.1 -> androidx.emoji2:emoji2:1.2.0 -> androidx.startup:startup-runtime:1.1.1
+build	Build with Gradle	2026-04-17T01:04:22.3541702Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.activity:activity:1.8.0 -> androidx.tracing:tracing:1.0.0
+build	Build with Gradle	2026-04-17T01:04:22.3543663Z   :app:debugRuntimeClasspath -> androidx.appcompat:appcompat:1.6.1 -> androidx.lifecycle:lifecycle-viewmodel:2.7.0
+build	Build with Gradle	2026-04-17T01:04:22.3545198Z   :app:debugRuntimeClasspath -> androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0
+build	Build with Gradle	2026-04-17T01:04:22.3547291Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.fragment:fragment:1.3.6 -> androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0
+build	Build with Gradle	2026-04-17T01:04:22.3549809Z   :app:debugRuntimeClasspath -> androidx.appcompat:appcompat:1.6.1 -> androidx.savedstate:savedstate:1.2.1
+build	Build with Gradle	2026-04-17T01:04:22.3552707Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.fragment:fragment:1.3.6 -> androidx.loader:loader:1.0.0 -> androidx.lifecycle:lifecycle-livedata:2.7.0 -> androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0
+build	Build with Gradle	2026-04-17T01:04:22.3556004Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.activity:activity:1.8.0 -> androidx.profileinstaller:profileinstaller:1.3.0
+build	Build with Gradle	2026-04-17T01:04:22.3558363Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.core:core:1.12.0 -> androidx.versionedparcelable:versionedparcelable:1.1.1
+build	Build with Gradle	2026-04-17T01:04:22.3560916Z   :app:debugRuntimeClasspath -> androidx.appcompat:appcompat:1.6.1
+build	Build with Gradle	2026-04-17T01:04:22.3563284Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.activity:activity:1.8.0
+build	Build with Gradle	2026-04-17T01:04:22.3565059Z   :app:debugRuntimeClasspath -> androidx.appcompat:appcompat:1.6.1 -> androidx.appcompat:appcompat-resources:1.6.1
+build	Build with Gradle	2026-04-17T01:04:22.3567051Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.vectordrawable:vectordrawable:1.1.0
+build	Build with Gradle	2026-04-17T01:04:22.3569543Z   :app:debugRuntimeClasspath -> androidx.appcompat:appcompat:1.6.1 -> androidx.appcompat:appcompat-resources:1.6.1 -> androidx.vectordrawable:vectordrawable-animated:1.1.0
+build	Build with Gradle	2026-04-17T01:04:22.3571722Z   :app:debugRuntimeClasspath -> androidx.appcompat:appcompat:1.6.1 -> androidx.cursoradapter:cursoradapter:1.0.0
+build	Build with Gradle	2026-04-17T01:04:22.3573909Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.drawerlayout:drawerlayout:1.1.1
+build	Build with Gradle	2026-04-17T01:04:22.3576241Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.drawerlayout:drawerlayout:1.1.1 -> androidx.customview:customview:1.1.0
+build	Build with Gradle	2026-04-17T01:04:22.3578573Z   :app:debugRuntimeClasspath -> androidx.appcompat:appcompat:1.6.1 -> androidx.emoji2:emoji2:1.2.0
+build	Build with Gradle	2026-04-17T01:04:22.3606708Z   :app:debugRuntimeClasspath -> androidx.appcompat:appcompat:1.6.1 -> androidx.emoji2:emoji2-views-helper:1.2.0
+build	Build with Gradle	2026-04-17T01:04:22.3608419Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.fragment:fragment:1.3.6
+build	Build with Gradle	2026-04-17T01:04:22.3610306Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.fragment:fragment:1.3.6 -> androidx.viewpager:viewpager:1.0.0
+build	Build with Gradle	2026-04-17T01:04:22.3612506Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.fragment:fragment:1.3.6 -> androidx.loader:loader:1.0.0
+build	Build with Gradle	2026-04-17T01:04:22.3615016Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.resourceinspection:resourceinspection-annotation:1.0.1
+build	Build with Gradle	2026-04-17T01:04:22.3616885Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0
+build	Build with Gradle	2026-04-17T01:04:22.3618464Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.cardview:cardview:1.0.0
+build	Build with Gradle	2026-04-17T01:04:22.3620652Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.coordinatorlayout:coordinatorlayout:1.1.0
+build	Build with Gradle	2026-04-17T01:04:22.3622832Z   :app:debugRuntimeClasspath -> androidx.constraintlayout:constraintlayout:2.1.4
+build	Build with Gradle	2026-04-17T01:04:22.3624088Z   :app:debugRuntimeClasspath -> androidx.constraintlayout:constraintlayout:2.1.4 -> androidx.constraintlayout:constraintlayout-core:1.0.4
+build	Build with Gradle	2026-04-17T01:04:22.3625264Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.dynamicanimation:dynamicanimation:1.0.0
+build	Build with Gradle	2026-04-17T01:04:22.3626621Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.dynamicanimation:dynamicanimation:1.0.0 -> androidx.legacy:legacy-support-core-utils:1.0.0
+build	Build with Gradle	2026-04-17T01:04:22.3628221Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.dynamicanimation:dynamicanimation:1.0.0 -> androidx.legacy:legacy-support-core-utils:1.0.0 -> androidx.documentfile:documentfile:1.0.0
+build	Build with Gradle	2026-04-17T01:04:22.3630551Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.dynamicanimation:dynamicanimation:1.0.0 -> androidx.legacy:legacy-support-core-utils:1.0.0 -> androidx.localbroadcastmanager:localbroadcastmanager:1.0.0
+build	Build with Gradle	2026-04-17T01:04:22.3632359Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.dynamicanimation:dynamicanimation:1.0.0 -> androidx.legacy:legacy-support-core-utils:1.0.0 -> androidx.print:print:1.0.0
+build	Build with Gradle	2026-04-17T01:04:22.3633670Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.recyclerview:recyclerview:1.1.0
+build	Build with Gradle	2026-04-17T01:04:22.3634616Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.transition:transition:1.2.0
+build	Build with Gradle	2026-04-17T01:04:22.3635538Z   :app:debugRuntimeClasspath -> com.google.android.material:material:1.11.0 -> androidx.viewpager2:viewpager2:1.0.0
+build	Build with Gradle	2026-04-17T01:04:22.3636310Z   :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.6.1
+build	Build with Gradle	2026-04-17T01:04:22.3636981Z   :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.6.1 -> androidx.room:room-common:2.6.1
+build	Build with Gradle	2026-04-17T01:04:22.3637650Z   :app:debugRuntimeClasspath -> androidx.room:room-ktx:2.6.1
+build	Build with Gradle	2026-04-17T01:04:22.3638278Z   :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.6.1 -> androidx.sqlite:sqlite:2.4.0
+build	Build with Gradle	2026-04-17T01:04:22.3639575Z   :app:debugRuntimeClasspath -> androidx.room:room-runtime:2.6.1 -> androidx.sqlite:sqlite-framework:2.4.0
+build	Build with Gradle	2026-04-17T01:04:22.3640795Z 
+build	Build with Gradle	2026-04-17T01:04:22.3641188Z * Try:
+build	Build with Gradle	2026-04-17T01:04:22.3641752Z > Run with --stacktrace option to get the stack trace.
+build	Build with Gradle	2026-04-17T01:04:22.3642714Z > Run with --info or --debug option to get more log output.
+build	Build with Gradle	2026-04-17T01:04:22.3643159Z > Run with --scan to get full insights.
+build	Build with Gradle	2026-04-17T01:04:22.3643495Z > Get more help at https://help.gradle.org.
+build	Build with Gradle	2026-04-17T01:04:22.3644358Z 
+build	Build with Gradle	2026-04-17T01:04:22.3644461Z BUILD FAILED in 38s
+build	Build with Gradle	2026-04-17T01:04:22.8379251Z ##[error]Process completed with exit code 1.
