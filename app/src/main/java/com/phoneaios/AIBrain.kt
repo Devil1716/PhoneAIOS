@@ -3,10 +3,8 @@ package com.phoneaios
 import android.content.Context
 import android.util.Log
 import com.google.mediapipe.tasks.genai.llminference.LlmInference
-import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
-import kotlinx.coroutines.delay
 
 class AIBrain(private val context: Context) {
     private val voiceFeedbackManager = VoiceFeedbackManager(context)
@@ -76,7 +74,7 @@ class AIBrain(private val context: Context) {
                 "input" -> ActionType.TYPE_TEXT
                 "swipe" -> ActionType.SWIPE
                 "wait" -> ActionType.WAIT
-                "done" -> ActionType.ENTER // Or a specific success type
+                "done" -> ActionType.ENTER
                 "long_press" -> ActionType.LONG_PRESS
                 else -> ActionType.WAIT
             }
@@ -87,9 +85,5 @@ class AIBrain(private val context: Context) {
                 spokenSummary = reasoning
             ))
         }.getOrElse { emptyList() }
-    }
-
-    private fun org.json.JSONObject.optNullableString(key: String): String? {
-        return if (has(key) && !isNull(key)) getString(key) else null
     }
 }
