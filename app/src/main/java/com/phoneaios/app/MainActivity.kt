@@ -15,6 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import com.phoneaios.app.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 import java.util.ArrayList
+import android.view.View
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private var speechRecognizer: SpeechRecognizer? = null
     private val actionExecutor by lazy { ActionExecutor(this) }
     private val promptEngine = PromptEngine()
+    private val downloadManager by lazy { ModelDownloadManager(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         checkPermissions()
         setupUI()
         initSpeechRecognizer()
+        checkModelStatus()
     }
 
     private fun setupUI() {
@@ -45,6 +48,26 @@ class MainActivity : AppCompatActivity() {
                 binding.commandInput.text.clear()
             }
             true
+        }
+
+        binding.downloadButton.setOnClickListener {
+            binding.downloadButton.isEnabled = false
+            binding.downloadProgress.visibility = View.VISIBLE
+            binding.downloadStatus.text = "Initializing Download..."
+            
+            downloadManager.startDownload {
+                runOnUiThread {
+                    binding.downloadContainer.visibility = View.GONE
+                    Toast.makeText(this, "AI Model Ready!", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun checkModelStatus() {
+        if (!downloadManager.isModelDownloaded()) {
+            binding.downloadContainer.visibility = View.VISIBLE
+            binding.downloadProgress.visibility = View.GONE
         }
     }
 

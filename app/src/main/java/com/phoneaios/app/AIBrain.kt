@@ -8,14 +8,11 @@ class AIBrain(private val context: Context) {
     private var llmInference: LlmInference? = null
 
     init {
-        val modelPath = "/data/local/tmp/gemma-2b-it.task" // Default recommended for large models
-        val assetsFile = File(context.assets.list("")?.find { it == "gemma-2b-it.task" } ?: "")
+        val modelFile = File(context.filesDir, "gemma-2b-it.task")
         
-        // This is a simplified initialization. 
-        // Real implementation would check assets or download.
-        if (assetsFile.exists()) {
+        if (modelFile.exists()) {
             val options = LlmInference.LlmInferenceOptions.builder()
-                .setModelPath(assetsFile.absolutePath)
+                .setModelPath(modelFile.absolutePath)
                 .setMaxTokens(512)
                 .build()
             llmInference = LlmInference.createFromOptions(context, options)
