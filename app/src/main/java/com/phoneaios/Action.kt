@@ -1,4 +1,4 @@
-package com.phoneaios.app
+package com.phoneaios
 
 enum class ActionType {
     OPEN_APP,
@@ -8,9 +8,8 @@ enum class ActionType {
     SWIPE,
     WAIT,
     ENTER,
-    INSTALL_CLICK,
-    SCROLL,
-    MEMORIZE
+    SCROLL_FORWARD,
+    GLOBAL_BACK
 }
 
 data class Action(
@@ -19,6 +18,9 @@ data class Action(
     val packageName: String? = null,
     val x: Float? = null,
     val y: Float? = null,
-    val duration: Long = 0,
-    val isSensitive: Boolean = false
+    val endX: Float? = null,
+    val endY: Float? = null,
+    val durationMs: Long = 600L,
+    val isSensitive: Boolean = false,
+    val spokenSummary: String = type.name
 )

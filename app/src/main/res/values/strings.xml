@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">PhoneAIOS</string>
+    <string name="status_ready">Offline agent ready</string>
+    <string name="status_model_missing">Gemma model missing</string>
+    <string name="status_model_ready">Gemma model ready</string>
+    <string name="status_model_downloading">Downloading Gemma model...</string>
+    <string name="status_permissions_needed">Enable accessibility, overlay, microphone, and unknown-app permissions.</string>
+    <string name="hint_command">Try: download subway surfers</string>
+    <string name="action_start_bubble">Start bubble</string>
+    <string name="action_voice_command">Voice command</string>
+    <string name="action_download_model">Download Gemma 2B model</string>
+    <string name="action_open_model_folder">Use local model folder</string>
+    <string name="label_safety_title">Swipe to approve sensitive action</string>
+    <string name="label_safety_cancel">Cancel action</string>
 </resources>

@@ -4,103 +4,154 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0e0e0e"
+    android:background="#0E0E0E"
+    android:padding="20dp"
     tools:context=".MainActivity">
 
-    <!-- ... existing header ... -->
-
-    <!-- Download UI (Hidden by default) -->
-    <LinearLayout
-        android:id="@+id/downloadContainer"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/statusTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
+        android:text="PhoneAIOS"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/statusSub"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/status_ready"
+        android:textColor="#A6A6A6"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusTitle" />
+
+    <LinearLayout
+        android:id="@+id/modelCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/glass_card"
         android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/composerBar">
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusSub">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gemma 2B"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/downloadStatus"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="AI Model Missing"
-            android:textColor="#ffffff" />
+            android:layout_marginTop="8dp"
+            android:text="@string/status_model_missing"
+            android:textColor="#B8B8B8" />
 
         <ProgressBar
             android:id="@+id/downloadProgress"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:indeterminate="true" />
+            android:layout_marginTop="12dp"
+            android:indeterminate="true"
+            android:visibility="gone" />
 
-        <Button
-            android:id="@+id/downloadButton"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:text="Download Model (~1.1GB)" />
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/downloadButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/action_download_model" />
+
+            <Button
+                android:id="@+id/openFolderButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="@string/action_open_model_folder" />
+        </LinearLayout>
     </LinearLayout>
 
-    <!-- Composer Bar ... -->
-
-    <!-- Status Header -->
-    <TextView
-        android:id="@+id/statusTitle"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/actionButtons"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="PhoneAIOS"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/modelCard">
 
-    <TextView
-        android:id="@+id/statusSub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Offline Agent Active"
-        android:textColor="#888888"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/statusTitle" />
+        <Button
+            android:id="@+id/startBubbleButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/action_start_bubble" />
 
-    <!-- Action Log (Glassmorphism inspired) -->
+        <Button
+            android:id="@+id/voiceButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:text="@string/action_voice_command" />
+    </LinearLayout>
+
     <ScrollView
         android:id="@+id/logScroll"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="24dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/glass_card"
         android:padding="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/composerBar"
-        app:layout_constraintTop_toBottomOf="@id/statusSub">
+        app:layout_constraintBottom_toTopOf="@id/composerBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/actionButtons">
 
         <TextView
             android:id="@+id/actionLog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
-            android:text="> Ready for commands..."
-            android:textColor="#00ffcc" />
+            android:lineSpacingExtra="3dp"
+            android:text="&gt; Ready for commands..."
+            android:textColor="#00FFCC"
+            android:textSize="13sp" />
     </ScrollView>
 
-    <!-- Composer Bar (Cursor 2.0 Style) -->
     <LinearLayout
         android:id="@+id/composerBar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/composer_bg"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <EditText
             android:id="@+id/commandInput"
@@ -108,27 +159,22 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:hint="Ask PhoneAI to do something..."
+            android:hint="@string/hint_command"
+            android:imeOptions="actionSend"
+            android:inputType="textCapSentences"
             android:padding="12dp"
-            android:textColor="#ffffff"
-            android:textColorHint="#555555" />
+            android:textColor="#FFFFFF"
+            android:textColorHint="#7B7B7B" />
 
         <ImageButton
             android:id="@+id/sendButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:background="@drawable/mic_bg"
+            android:contentDescription="@string/action_voice_command"
             android:src="@android:drawable/ic_menu_send"
-            app:tint="#ffffff" />
-
-        <ImageButton
-            android:id="@+id/micButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@drawable/mic_bg"
-            android:src="@android:drawable/ic_btn_speak_now"
-            app:tint="#ffffff" />
+            app:tint="#FFFFFF" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

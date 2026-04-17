@@ -3,4 +3,5 @@
 /app/build/
 *.apk
 *.task
+local.properties
 .DS_Store
