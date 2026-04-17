@@ -41,6 +41,14 @@ class MainActivity : AppCompatActivity() {
             startFloatingService()
         }
 
+        binding.sendButton.setOnClickListener {
+            val cmd = binding.commandInput.text.toString()
+            if (cmd.isNotEmpty()) {
+                executeCommand(cmd)
+                binding.commandInput.text.clear()
+            }
+        }
+
         binding.commandInput.setOnEditorActionListener { _, _, _ ->
             val cmd = binding.commandInput.text.toString()
             if (cmd.isNotEmpty()) {
@@ -144,8 +152,25 @@ class MainActivity : AppCompatActivity() {
                 binding.actionLog.append("\n> AI: Sequence complete")
             }
         } else {
-            binding.actionLog.append("\n> AI: Command not recognized via pattern matching. Using LLM...")
-            // Fallback to AIBrain here
+            binding.actionLog.append("\n> AI: Complex command detected. Querying Gemma model...")
+            lifecycleScope.launch {
+                val screenContext = withContext(Dispatchers.IO) {
+                    val root = PhoneControlService.instance?.rootInActiveWindow
+                    screenParser.parseScreen(root)
+                }
+                
+                val actions = withContext(Dispatchers.IO) {
+                    aiBrain?.generateActions(cmd, screenContext) ?: emptyList()
+                }
+                
+                if (actions.isNotEmpty()) {
+                    binding.actionLog.append("\n> AI: Planning sequence (${actions.size} steps)")
+                    actionExecutor.execute(actions)
+                    binding.actionLog.append("\n> AI: Sequence complete")
+                } else {
+                    binding.actionLog.append("\n> AI: Failed to generate plan. Is the model downloaded?")
+                }
+            }
         }
     }
 

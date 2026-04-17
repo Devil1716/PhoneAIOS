@@ -44,25 +44,56 @@ class ModelDownloadManager(private val context: Context) {
             .setAllowedOverRoaming(true)
 
         downloadId = downloadManager.enqueue(request)
+        Log.d(TAG, "Download enqueued with ID: $downloadId")
 
         val receiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
                 val id = intent?.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
                 if (id == downloadId) {
-                    Log.d(TAG, "Download completed")
-                    // Copy to internal files dir for safer access
-                    val source = File(context?.getExternalFilesDir(null), MODEL_FILENAME)
-                    val dest = File(context?.filesDir, MODEL_FILENAME)
-                    if (source.exists()) {
-                        source.copyTo(dest, overwrite = true)
-                        source.delete()
+                    val query = DownloadManager.Query().setFilterById(downloadId)
+                    val cursor = downloadManager.query(query)
+                    
+                    if (cursor.moveToFirst()) {
+                        val statusIndex = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)
+                        val status = cursor.getInt(statusIndex)
+                        
+                        if (status == DownloadManager.STATUS_SUCCESSFUL) {
+                            Log.d(TAG, "Download completed successfully")
+                            val source = File(context?.getExternalFilesDir(null), MODEL_FILENAME)
+                            val dest = File(context?.filesDir, MODEL_FILENAME)
+                            
+                            try {
+                                if (source.exists()) {
+                                    source.copyTo(dest, overwrite = true)
+                                    source.delete()
+                                    Log.d(TAG, "Model moved to internal storage")
+                                    onComplete()
+                                } else {
+                                    Log.e(TAG, "Source file not found after download success!")
+                                }
+                            } catch (e: Exception) {
+                                Log.e(TAG, "Error processing model file: ${e.message}")
+                            }
+                        } else {
+                            val reasonIndex = cursor.getColumnIndex(DownloadManager.COLUMN_REASON)
+                            val reason = cursor.getInt(reasonIndex)
+                            Log.e(TAG, "Download failed with status $status, reason: $reason")
+                        }
                     }
-                    onComplete()
-                    context?.unregisterReceiver(this)
+                    cursor.close()
+                    try {
+                        context?.unregisterReceiver(this)
+                    } catch (e: Exception) {
+                        Log.e(TAG, "Error unregistering receiver: ${e.message}")
+                    }
                 }
             }
         }
 
-        context.registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            context.registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE), Context.RECEIVER_NOT_EXPORTED)
+        } else {
+            context.registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
+        }
     }
 }
