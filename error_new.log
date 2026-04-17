@@ -1,0 +1,51 @@
+﻿build	Build with Gradle	∩╗┐2026-04-17T00:41:35.4913441Z ##[group]Run gradle assembleDebug
+build	Build with Gradle	2026-04-17T00:41:35.4913825Z [36;1mgradle assembleDebug[0m
+build	Build with Gradle	2026-04-17T00:41:35.4939588Z shell: /usr/bin/bash -e {0}
+build	Build with Gradle	2026-04-17T00:41:35.4939895Z env:
+build	Build with Gradle	2026-04-17T00:41:35.4940201Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T00:41:35.4940679Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T00:41:35.4941307Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+build	Build with Gradle	2026-04-17T00:41:35.4941609Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+build	Build with Gradle	2026-04-17T00:41:35.4941894Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+build	Build with Gradle	2026-04-17T00:41:35.4942317Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+build	Build with Gradle	2026-04-17T00:41:35.4942842Z   DEVELOCITY_AUTO_INJECTION_CUSTOM_VALUE: gradle-actions
+build	Build with Gradle	2026-04-17T00:41:35.4943149Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+build	Build with Gradle	2026-04-17T00:41:35.4943404Z ##[endgroup]
+build	Build with Gradle	2026-04-17T00:41:37.9688078Z 
+build	Build with Gradle	2026-04-17T00:41:37.9689514Z Welcome to Gradle 9.4.1!
+build	Build with Gradle	2026-04-17T00:41:37.9689970Z 
+build	Build with Gradle	2026-04-17T00:41:37.9690960Z Here are the highlights of this release:
+build	Build with Gradle	2026-04-17T00:41:37.9698030Z  - Java 26 support
+build	Build with Gradle	2026-04-17T00:41:37.9704934Z  - Non-class-based JVM tests
+build	Build with Gradle	2026-04-17T00:41:37.9705881Z  - Enhanced console progress bar
+build	Build with Gradle	2026-04-17T00:41:37.9707064Z 
+build	Build with Gradle	2026-04-17T00:41:37.9707405Z For more details see https://docs.gradle.org/9.4.1/release-notes.html
+build	Build with Gradle	2026-04-17T00:41:37.9707877Z 
+build	Build with Gradle	2026-04-17T00:41:38.4677042Z Starting a Gradle Daemon (subsequent builds will be faster)
+build	Build with Gradle	2026-04-17T00:42:23.5692223Z 
+build	Build with Gradle	2026-04-17T00:42:23.5722539Z FAILURE: Build failed with an exception.
+build	Build with Gradle	2026-04-17T00:42:23.5722997Z 
+build	Build with Gradle	2026-04-17T00:42:23.5751675Z 
+build	Build with Gradle	2026-04-17T00:42:23.5752074Z * Where:
+build	Build with Gradle	2026-04-17T00:42:23.5752670Z Build file '/home/runner/work/PhoneAIOS/PhoneAIOS/app/build.gradle' line: 51
+build	Build with Gradle	2026-04-17T00:42:23.5753167Z 
+build	Build with Gradle	2026-04-17T00:42:23.5753275Z * What went wrong:
+build	Build with Gradle	2026-04-17T00:42:23.5753780Z Could not compile build file '/home/runner/work/PhoneAIOS/PhoneAIOS/app/build.gradle'.
+build	Build with Gradle	2026-04-17T00:42:23.5754416Z > startup failed:
+build	Build with Gradle	2026-04-17T00:42:23.5755000Z   build file '/home/runner/work/PhoneAIOS/PhoneAIOS/app/build.gradle': 51: unable to resolve class val 
+build	Build with Gradle	2026-04-17T00:42:23.5755672Z    @ line 51, column 9.
+build	Build with Gradle	2026-04-17T00:42:23.5755975Z          val room_version = "2.6.1"
+build	Build with Gradle	2026-04-17T00:42:23.5756289Z              ^
+build	Build with Gradle	2026-04-17T00:42:23.5756533Z   
+build	Build with Gradle	2026-04-17T00:42:23.5756755Z   1 error
+build	Build with Gradle	2026-04-17T00:42:23.5756889Z 
+build	Build with Gradle	2026-04-17T00:42:23.5756898Z 
+build	Build with Gradle	2026-04-17T00:42:23.5757582Z [Incubating] Problems report is available at: file:///home/runner/work/PhoneAIOS/PhoneAIOS/build/reports/problems/problems-report.html
+build	Build with Gradle	2026-04-17T00:42:23.5806977Z * Try:
+build	Build with Gradle	2026-04-17T00:42:23.5832420Z > Run with --stacktrace option to get the stack trace.
+build	Build with Gradle	2026-04-17T00:42:23.5842266Z > Run with --info or --debug option to get more log output.
+build	Build with Gradle	2026-04-17T00:42:23.5843421Z > Run with --scan to get full insights from a Build Scan (powered by Develocity).
+build	Build with Gradle	2026-04-17T00:42:23.5844331Z > Get more help at https://help.gradle.org.
+build	Build with Gradle	2026-04-17T00:42:23.5844936Z 
+build	Build with Gradle	2026-04-17T00:42:23.5845251Z BUILD FAILED in 47s
+build	Build with Gradle	2026-04-17T00:42:24.0517167Z ##[error]Process completed with exit code 1.
