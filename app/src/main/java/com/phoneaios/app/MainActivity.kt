@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var speechRecognizer: SpeechRecognizer? = null
-    private val actionExecutor = ActionExecutor()
+    private val actionExecutor by lazy { ActionExecutor(this) }
     private val promptEngine = PromptEngine()
 
     override fun onCreate(savedInstanceState: Bundle?) {
