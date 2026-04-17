@@ -6,8 +6,9 @@ import com.google.mediapipe.tasks.genai.llminference.LlmInference
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
+import kotlinx.coroutines.delay
 
-class AIBrain(context: Context) {
+class AIBrain(private val context: Context) {
     private val voiceFeedbackManager = VoiceFeedbackManager(context)
 
     private val llmInference: LlmInference? = ModelDownloadManager(context).resolveModelFile()?.let { modelFile ->
