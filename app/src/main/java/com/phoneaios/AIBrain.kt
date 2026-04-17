@@ -14,7 +14,7 @@ class AIBrain(private val context: Context) {
             val options = LlmInference.LlmInferenceOptions.builder()
                 .setModelPath(modelFile.absolutePath)
                 .setMaxTokens(512)
-                .setMaxTopK(40)
+                .setTopK(40)
                 .build()
             LlmInference.createFromOptions(context, options)
         }.getOrElse { error ->
