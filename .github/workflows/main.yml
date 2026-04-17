@@ -2,9 +2,9 @@ name: Build PhoneAIOS APK
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
@@ -18,23 +18,29 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: gradle
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
 
     - name: Build with Gradle
-      run: ./gradlew assembleDebug
-
-    - name: Upload APK
+      run: gradle assembleDebug
+      
+    - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
       with:
         name: PhoneAIOS-debug
         path: app/build/outputs/apk/debug/app-debug.apk
+
+    - name: Attach APK to Release
+      if: github.event_name == 'push' && contains(github.ref, 'master')
+      run: |
+        gh release upload v1.4 app/build/outputs/apk/debug/app-debug.apk --clobber
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create Issue on Build Failure
       if: failure()
       run: |
         gh issue create --title "Build Failure: ${{ github.sha }}" --body "The latest build failed. Check logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
       env:
-        GH_TOKEN: ${{ android.app.src.main.res.values.strings.xml }} # Placeholder or user token
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
