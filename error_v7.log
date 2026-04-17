@@ -1,0 +1,15 @@
+﻿build	Build with Gradle	∩╗┐2026-04-17T01:02:07.8378108Z ##[group]Run ./gradlew assembleDebug
+build	Build with Gradle	2026-04-17T01:02:07.8378722Z [36;1m./gradlew assembleDebug[0m
+build	Build with Gradle	2026-04-17T01:02:07.8402183Z shell: /usr/bin/bash -e {0}
+build	Build with Gradle	2026-04-17T01:02:07.8402440Z env:
+build	Build with Gradle	2026-04-17T01:02:07.8402732Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T01:02:07.8403216Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T01:02:07.8403628Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+build	Build with Gradle	2026-04-17T01:02:07.8403929Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+build	Build with Gradle	2026-04-17T01:02:07.8404236Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+build	Build with Gradle	2026-04-17T01:02:07.8404658Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+build	Build with Gradle	2026-04-17T01:02:07.8405119Z   DEVELOCITY_AUTO_INJECTION_CUSTOM_VALUE: gradle-actions
+build	Build with Gradle	2026-04-17T01:02:07.8405422Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+build	Build with Gradle	2026-04-17T01:02:07.8405673Z ##[endgroup]
+build	Build with Gradle	2026-04-17T01:02:07.9137964Z no main manifest attribute, in /home/runner/work/PhoneAIOS/PhoneAIOS/gradle/wrapper/gradle-wrapper.jar
+build	Build with Gradle	2026-04-17T01:02:07.9182491Z ##[error]Process completed with exit code 1.
