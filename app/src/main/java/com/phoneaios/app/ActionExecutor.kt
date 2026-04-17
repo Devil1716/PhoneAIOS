@@ -56,7 +56,6 @@ class ActionExecutor(context: Context) {
                     android.util.Log.w("ActionExecutor", "Action failed: ${action.type}. Attempting recovery/notification.")
                     // In a real scenario, we might trigger a 'back' gesture or wait 
                 }
-            }
             delay(1000) 
         }
         callback?.onSequenceComplete()
