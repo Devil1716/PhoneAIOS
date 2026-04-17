@@ -1,0 +1,56 @@
+﻿build	Build with Gradle	∩╗┐2026-04-17T01:05:50.4066308Z ##[group]Run gradle assembleDebug
+build	Build with Gradle	2026-04-17T01:05:50.4066705Z [36;1mgradle assembleDebug[0m
+build	Build with Gradle	2026-04-17T01:05:50.4082701Z shell: /usr/bin/bash -e {0}
+build	Build with Gradle	2026-04-17T01:05:50.4082972Z env:
+build	Build with Gradle	2026-04-17T01:05:50.4083263Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T01:05:50.4083698Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T01:05:50.4084072Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+build	Build with Gradle	2026-04-17T01:05:50.4084395Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+build	Build with Gradle	2026-04-17T01:05:50.4084670Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+build	Build with Gradle	2026-04-17T01:05:50.4085339Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+build	Build with Gradle	2026-04-17T01:05:50.4085784Z   DEVELOCITY_AUTO_INJECTION_CUSTOM_VALUE: gradle-actions
+build	Build with Gradle	2026-04-17T01:05:50.4086094Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+build	Build with Gradle	2026-04-17T01:05:50.4086343Z ##[endgroup]
+build	Build with Gradle	2026-04-17T01:05:51.3700149Z 
+build	Build with Gradle	2026-04-17T01:05:51.3700773Z Welcome to Gradle 8.4!
+build	Build with Gradle	2026-04-17T01:05:51.3701163Z 
+build	Build with Gradle	2026-04-17T01:05:51.3703084Z Here are the highlights of this release:
+build	Build with Gradle	2026-04-17T01:05:51.3703655Z  - Compiling and testing with Java 21
+build	Build with Gradle	2026-04-17T01:05:51.3704774Z  - Faster Java compilation on Windows
+build	Build with Gradle	2026-04-17T01:05:51.3706252Z  - Role focused dependency configurations creation
+build	Build with Gradle	2026-04-17T01:05:51.3707010Z 
+build	Build with Gradle	2026-04-17T01:05:51.3707549Z For more details see https://docs.gradle.org/8.4/release-notes.html
+build	Build with Gradle	2026-04-17T01:05:51.3708349Z 
+build	Build with Gradle	2026-04-17T01:05:51.8686676Z Starting a Gradle Daemon (subsequent builds will be faster)
+build	Build with Gradle	2026-04-17T01:06:23.7735938Z > Task :app:preBuild UP-TO-DATE
+build	Build with Gradle	2026-04-17T01:06:23.7788480Z > Task :app:preDebugBuild UP-TO-DATE
+build	Build with Gradle	2026-04-17T01:06:23.7789325Z > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+build	Build with Gradle	2026-04-17T01:06:23.7816634Z > Task :app:checkKotlinGradlePluginConfigurationErrors
+build	Build with Gradle	2026-04-17T01:06:31.6717475Z > Task :app:generateDebugResValues
+build	Build with Gradle	2026-04-17T01:06:31.6748910Z > Task :app:generateDebugResources
+build	Build with Gradle	2026-04-17T01:06:31.6785771Z > Task :app:dataBindingMergeDependencyArtifactsDebug
+build	Build with Gradle	2026-04-17T01:06:33.3705847Z > Task :app:packageDebugResources
+build	Build with Gradle	2026-04-17T01:06:34.2690170Z > Task :app:mergeDebugResources
+build	Build with Gradle	2026-04-17T01:06:34.4686756Z > Task :app:parseDebugLocalResources
+build	Build with Gradle	2026-04-17T01:06:34.5689032Z > Task :app:checkDebugAarMetadata
+build	Build with Gradle	2026-04-17T01:06:34.9687140Z > Task :app:dataBindingGenBaseClassesDebug
+build	Build with Gradle	2026-04-17T01:06:34.9689280Z > Task :app:mapDebugSourceSetPaths
+build	Build with Gradle	2026-04-17T01:06:34.9689970Z > Task :app:createDebugCompatibleScreenManifests
+build	Build with Gradle	2026-04-17T01:06:34.9690426Z > Task :app:extractDeepLinksDebug
+build	Build with Gradle	2026-04-17T01:06:35.1689883Z > Task :app:processDebugMainManifest FAILED
+build	Build with Gradle	2026-04-17T01:06:35.2687277Z 
+build	Build with Gradle	2026-04-17T01:06:35.2695220Z 12 actionable tasks: 12 executed
+build	Build with Gradle	2026-04-17T01:06:35.2698474Z FAILURE: Build failed with an exception.
+build	Build with Gradle	2026-04-17T01:06:35.2698873Z 
+build	Build with Gradle	2026-04-17T01:06:35.2699011Z * What went wrong:
+build	Build with Gradle	2026-04-17T01:06:35.2699520Z Execution failed for task ':app:processDebugMainManifest'.
+build	Build with Gradle	2026-04-17T01:06:35.2700866Z > com.android.manifmerger.ManifestMerger2$MergeFailureException: Error parsing /home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/AndroidManifest.xml
+build	Build with Gradle	2026-04-17T01:06:35.2701947Z 
+build	Build with Gradle	2026-04-17T01:06:35.2702076Z * Try:
+build	Build with Gradle	2026-04-17T01:06:35.2702459Z > Run with --stacktrace option to get the stack trace.
+build	Build with Gradle	2026-04-17T01:06:35.2703089Z > Run with --info or --debug option to get more log output.
+build	Build with Gradle	2026-04-17T01:06:35.2703648Z > Run with --scan to get full insights.
+build	Build with Gradle	2026-04-17T01:06:35.2704301Z > Get more help at https://help.gradle.org.
+build	Build with Gradle	2026-04-17T01:06:35.2704616Z 
+build	Build with Gradle	2026-04-17T01:06:35.2704751Z BUILD FAILED in 44s
+build	Build with Gradle	2026-04-17T01:06:35.6619434Z ##[error]Process completed with exit code 1.
