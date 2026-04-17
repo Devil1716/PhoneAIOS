@@ -1,0 +1,101 @@
+﻿build	Build with Gradle	∩╗┐2026-04-17T01:54:15.8040281Z ##[group]Run gradle assembleDebug
+build	Build with Gradle	2026-04-17T01:54:15.8040684Z [36;1mgradle assembleDebug[0m
+build	Build with Gradle	2026-04-17T01:54:15.8057901Z shell: /usr/bin/bash -e {0}
+build	Build with Gradle	2026-04-17T01:54:15.8058173Z env:
+build	Build with Gradle	2026-04-17T01:54:15.8058457Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T01:54:15.8058902Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
+build	Build with Gradle	2026-04-17T01:54:15.8059275Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle
+build	Build with Gradle	2026-04-17T01:54:15.8059570Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+build	Build with Gradle	2026-04-17T01:54:15.8059869Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+build	Build with Gradle	2026-04-17T01:54:15.8060275Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle
+build	Build with Gradle	2026-04-17T01:54:15.8060721Z   DEVELOCITY_AUTO_INJECTION_CUSTOM_VALUE: gradle-actions
+build	Build with Gradle	2026-04-17T01:54:15.8061014Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false
+build	Build with Gradle	2026-04-17T01:54:15.8061265Z ##[endgroup]
+build	Build with Gradle	2026-04-17T01:54:16.7570860Z 
+build	Build with Gradle	2026-04-17T01:54:16.7588362Z Welcome to Gradle 8.4!
+build	Build with Gradle	2026-04-17T01:54:16.7595836Z 
+build	Build with Gradle	2026-04-17T01:54:16.7597008Z Here are the highlights of this release:
+build	Build with Gradle	2026-04-17T01:54:16.7597783Z  - Compiling and testing with Java 21
+build	Build with Gradle	2026-04-17T01:54:16.7598583Z  - Faster Java compilation on Windows
+build	Build with Gradle	2026-04-17T01:54:16.7599209Z  - Role focused dependency configurations creation
+build	Build with Gradle	2026-04-17T01:54:16.7599738Z 
+build	Build with Gradle	2026-04-17T01:54:16.7600191Z For more details see https://docs.gradle.org/8.4/release-notes.html
+build	Build with Gradle	2026-04-17T01:54:16.7601393Z 
+build	Build with Gradle	2026-04-17T01:54:17.1562642Z Starting a Gradle Daemon (subsequent builds will be faster)
+build	Build with Gradle	2026-04-17T01:54:47.2618803Z > Task :app:preBuild UP-TO-DATE
+build	Build with Gradle	2026-04-17T01:54:47.2619493Z > Task :app:preDebugBuild UP-TO-DATE
+build	Build with Gradle	2026-04-17T01:54:47.2620004Z > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+build	Build with Gradle	2026-04-17T01:54:47.2620663Z > Task :app:checkKotlinGradlePluginConfigurationErrors
+build	Build with Gradle	2026-04-17T01:54:54.8563674Z > Task :app:dataBindingMergeDependencyArtifactsDebug
+build	Build with Gradle	2026-04-17T01:54:54.8592575Z > Task :app:generateDebugResValues
+build	Build with Gradle	2026-04-17T01:54:54.8608715Z > Task :app:generateDebugResources
+build	Build with Gradle	2026-04-17T01:54:56.5602573Z > Task :app:packageDebugResources
+build	Build with Gradle	2026-04-17T01:54:57.4561985Z > Task :app:mergeDebugResources
+build	Build with Gradle	2026-04-17T01:54:57.5562480Z > Task :app:parseDebugLocalResources
+build	Build with Gradle	2026-04-17T01:54:57.5563114Z > Task :app:checkDebugAarMetadata
+build	Build with Gradle	2026-04-17T01:54:57.8572708Z > Task :app:dataBindingGenBaseClassesDebug
+build	Build with Gradle	2026-04-17T01:54:57.9572868Z > Task :app:mapDebugSourceSetPaths
+build	Build with Gradle	2026-04-17T01:54:57.9590345Z > Task :app:createDebugCompatibleScreenManifests
+build	Build with Gradle	2026-04-17T01:54:57.9591064Z > Task :app:extractDeepLinksDebug
+build	Build with Gradle	2026-04-17T01:54:58.2569155Z 
+build	Build with Gradle	2026-04-17T01:54:58.2614215Z > Task :app:processDebugMainManifest
+build	Build with Gradle	2026-04-17T01:54:58.2633190Z package="com.phoneaios.app" found in source AndroidManifest.xml: /home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/AndroidManifest.xml.
+build	Build with Gradle	2026-04-17T01:54:58.2663096Z Setting the namespace via the package attribute in the source AndroidManifest.xml is no longer supported, and the value is ignored.
+build	Build with Gradle	2026-04-17T01:54:58.2683161Z Recommendation: remove package="com.phoneaios.app" from the source AndroidManifest.xml: /home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/AndroidManifest.xml.
+build	Build with Gradle	2026-04-17T01:54:58.3558921Z 
+build	Build with Gradle	2026-04-17T01:54:58.3559739Z > Task :app:processDebugManifest
+build	Build with Gradle	2026-04-17T01:54:59.8590617Z > Task :app:javaPreCompileDebug
+build	Build with Gradle	2026-04-17T01:54:59.8602622Z > Task :app:mergeDebugShaders
+build	Build with Gradle	2026-04-17T01:54:59.9582826Z > Task :app:compileDebugShaders NO-SOURCE
+build	Build with Gradle	2026-04-17T01:54:59.9584109Z > Task :app:generateDebugAssets UP-TO-DATE
+build	Build with Gradle	2026-04-17T01:54:59.9584926Z > Task :app:mergeDebugAssets
+build	Build with Gradle	2026-04-17T01:54:59.9585497Z > Task :app:compressDebugAssets
+build	Build with Gradle	2026-04-17T01:55:01.9578813Z > Task :app:desugarDebugFileDependencies
+build	Build with Gradle	2026-04-17T01:55:01.9605521Z > Task :app:mergeDebugJniLibFolders
+build	Build with Gradle	2026-04-17T01:55:01.9608722Z > Task :app:checkDebugDuplicateClasses
+build	Build with Gradle	2026-04-17T01:55:02.1560361Z > Task :app:mergeDebugNativeLibs
+build	Build with Gradle	2026-04-17T01:55:28.3602411Z > Task :app:processDebugManifestForPackage
+build	Build with Gradle	2026-04-17T01:55:31.1562499Z > Task :app:mergeLibDexDebug
+build	Build with Gradle	2026-04-17T01:55:31.2572034Z 
+build	Build with Gradle	2026-04-17T01:55:31.2592772Z > Task :app:stripDebugDebugSymbols
+build	Build with Gradle	2026-04-17T01:55:31.2594071Z Unable to strip the following libraries, packaging them as they are: libllm_inference_engine_jni.so, libmediapipe_tasks_text_jni.so.
+build	Build with Gradle	2026-04-17T01:55:32.0582062Z 
+build	Build with Gradle	2026-04-17T01:55:32.0594402Z > Task :app:mergeExtDexDebug
+build	Build with Gradle	2026-04-17T01:55:33.4560022Z > Task :app:processDebugResources
+build	Build with Gradle	2026-04-17T01:55:33.7562337Z > Task :app:validateSigningDebug
+build	Build with Gradle	2026-04-17T01:55:40.0559977Z > Task :app:writeDebugAppMetadata
+build	Build with Gradle	2026-04-17T01:55:40.1560310Z > Task :app:writeDebugSigningConfigVersions
+build	Build with Gradle	2026-04-17T01:55:47.0612503Z > Task :app:kaptGenerateStubsDebugKotlin
+build	Build with Gradle	2026-04-17T01:55:49.0561304Z 
+build	Build with Gradle	2026-04-17T01:55:49.0562328Z > Task :app:kaptDebugKotlin
+build	Build with Gradle	2026-04-17T01:55:49.0563185Z Annotation processors discovery from compile classpath is deprecated.
+build	Build with Gradle	2026-04-17T01:55:49.0564097Z Set 'kapt.include.compile.classpath=false' to disable discovery.
+build	Build with Gradle	2026-04-17T01:55:49.0564850Z Run the build with '--info' for more details.
+build	Build with Gradle	2026-04-17T01:55:50.4562050Z /home/runner/work/PhoneAIOS/PhoneAIOS/app/build/tmp/kapt3/stubs/debug/com/phoneaios/app/MemoryGraphDatabase.java:5: warning: Schema export directory was not provided to the annotation processor so Room cannot export the schema. You can either provide `room.schemaLocation` annotation processor argument by applying the Room Gradle plugin (id 'androidx.room') OR set exportSchema to false.
+build	Build with Gradle	2026-04-17T01:55:50.4565165Z public abstract class MemoryGraphDatabase extends androidx.room.RoomDatabase {
+build	Build with Gradle	2026-04-17T01:55:50.4583353Z                 ^
+build	Build with Gradle	2026-04-17T01:55:54.6594814Z 
+build	Build with Gradle	2026-04-17T01:55:54.6598005Z e: file:///home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/java/com/phoneaios/app/MainActivity.kt:157:37 Unresolved reference: withContext
+build	Build with Gradle	2026-04-17T01:55:54.6612283Z > Task :app:compileDebugKotlin FAILED
+build	Build with Gradle	2026-04-17T01:55:54.6652768Z e: file:///home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/java/com/phoneaios/app/MainActivity.kt:157:49 Unresolved reference: Dispatchers
+build	Build with Gradle	2026-04-17T01:55:54.6682744Z e: file:///home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/java/com/phoneaios/app/MainActivity.kt:159:21 Unresolved reference: screenParser
+build	Build with Gradle	2026-04-17T01:55:54.6715394Z e: file:///home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/java/com/phoneaios/app/MainActivity.kt:162:31 Unresolved reference: withContext
+build	Build with Gradle	2026-04-17T01:55:54.6742751Z e: file:///home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/java/com/phoneaios/app/MainActivity.kt:162:43 Unresolved reference: Dispatchers
+build	Build with Gradle	2026-04-17T01:55:54.6759483Z e: file:///home/runner/work/PhoneAIOS/PhoneAIOS/app/src/main/java/com/phoneaios/app/MainActivity.kt:163:21 Unresolved reference: aiBrain
+build	Build with Gradle	2026-04-17T01:55:54.7559125Z 
+build	Build with Gradle	2026-04-17T01:55:54.7575662Z 32 actionable tasks: 32 executed
+build	Build with Gradle	2026-04-17T01:55:54.7609422Z FAILURE: Build failed with an exception.
+build	Build with Gradle	2026-04-17T01:55:54.7610224Z 
+build	Build with Gradle	2026-04-17T01:55:54.7610444Z * What went wrong:
+build	Build with Gradle	2026-04-17T01:55:54.7613158Z Execution failed for task ':app:compileDebugKotlin'.
+build	Build with Gradle	2026-04-17T01:55:54.7614421Z > A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+build	Build with Gradle	2026-04-17T01:55:54.7615377Z    > Compilation error. See log for more details
+build	Build with Gradle	2026-04-17T01:55:54.7615645Z 
+build	Build with Gradle	2026-04-17T01:55:54.7615734Z * Try:
+build	Build with Gradle	2026-04-17T01:55:54.7616035Z > Run with --stacktrace option to get the stack trace.
+build	Build with Gradle	2026-04-17T01:55:54.7616500Z > Run with --info or --debug option to get more log output.
+build	Build with Gradle	2026-04-17T01:55:54.7616920Z > Run with --scan to get full insights.
+build	Build with Gradle	2026-04-17T01:55:54.7617297Z > Get more help at https://help.gradle.org.
+build	Build with Gradle	2026-04-17T01:55:54.7617565Z 
+build	Build with Gradle	2026-04-17T01:55:54.7618063Z BUILD FAILED in 1m 38s
+build	Build with Gradle	2026-04-17T01:55:55.1593824Z ##[error]Process completed with exit code 1.

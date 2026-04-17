@@ -14,6 +14,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.phoneaios.app.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.Dispatchers
 import java.util.ArrayList
 import android.view.View
 
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     private val actionExecutor by lazy { ActionExecutor(this) }
     private val promptEngine = PromptEngine()
     private val downloadManager by lazy { ModelDownloadManager(this) }
+    private var aiBrain: AIBrain? = null
+    private val screenParser = ScreenParser()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         checkPermissions()
         setupUI()
         initSpeechRecognizer()
+        aiBrain = AIBrain(this)
         checkModelStatus()
     }
 
